@@ -1,0 +1,14 @@
+steps:
+- resolve intent
+- load profile
+- inspect evidence
+- identify lifecycle stage
+- identify assurance target
+- select capabilities
+- resolve dependencies
+- estimate materiality
+- create execution plan
+constraints:
+- do not execute unrelated capabilities
+- do not omit material cross-cutting risks
+- explain selected scope

@@ -1,0 +1,31 @@
+id: JRN-LEAD-PEER
+name: Lead Peer Assurance Journey
+profiles:
+- lead-peer
+- guided-engineer
+purpose: Provide independent architecture and engineering assurance for an existing
+  system.
+stages:
+- - reconstruct
+  - - SOAS-DISC-REPOSITORY
+    - SOAS-DISC-ARCHITECTURE
+    - SOAS-DISC-INFRASTRUCTURE
+- - challenge
+  - - SOAS-ARCH-SOLUTION
+    - SOAS-ARCH-TRADEOFFS
+    - SOAS-REQ-QUALITY
+- - assure
+  - - SOAS-SEC-APPLICATION
+    - SOAS-SEC-INFRASTRUCTURE
+    - SOAS-ENG-MAINTAINABILITY
+    - SOAS-DATA-INTEGRITY
+    - SOAS-PERF-CAPACITY
+    - SOAS-RES-FAILURE
+- - operate
+  - - SOAS-OPS-OBSERVABILITY
+    - SOAS-OPS-RECOVERY
+    - SOAS-REL-PRODUCTION
+- - conclude
+  - - SOAS-GOV-RISK
+    - SOAS-GOV-DECISIONS
+    - SOAS-REL-OPINION

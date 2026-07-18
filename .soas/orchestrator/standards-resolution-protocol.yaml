@@ -1,0 +1,10 @@
+policy: latest-official-final
+steps:
+- read registry
+- select applicable standards
+- check official authority when internet is available
+- resolve final version and errata
+- treat drafts as advisory
+- record versions and access limitations
+official_sources_only: true
+offline_behaviour: use pinned versions and create a standards-freshness limitation

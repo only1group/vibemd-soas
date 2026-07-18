@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SOAS Finding",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "severity",
+    "status",
+    "description",
+    "evidence",
+    "risk",
+    "remediation",
+    "verification",
+    "framework_mappings"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^SOAS-F-[0-9]{4,}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "severity": {
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low",
+        "informational"
+      ]
+    },
+    "status": {
+      "enum": [
+        "open",
+        "planned",
+        "in-progress",
+        "ready-for-verification",
+        "closed",
+        "accepted-risk",
+        "reopened"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "risk": {
+      "type": "string"
+    },
+    "remediation": {
+      "type": "string"
+    },
+    "verification": {
+      "type": "string"
+    },
+    "framework_mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "framework",
+          "version"
+        ],
+        "properties": {
+          "framework": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "control": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

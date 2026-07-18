@@ -1,0 +1,156 @@
+registry_version: 1.0.0
+last_verified: '2026-07-18'
+selection_policy: latest official final; drafts advisory only
+standards:
+- id: ISO-25010
+  name: Systems and software quality models
+  authority: ISO/IEC
+  pinned_version: '2023'
+  status: published
+  use: quality model
+- id: ISO-42010
+  name: Architecture description
+  authority: ISO/IEC/IEEE
+  pinned_version: '2022'
+  status: published
+  use: architecture
+- id: ISO-29148
+  name: Requirements engineering
+  authority: ISO/IEC/IEEE
+  pinned_version: '2018'
+  status: published
+  use: requirements
+- id: NIST-SSDF
+  name: Secure Software Development Framework
+  authority: NIST
+  pinned_version: '1.1'
+  status: final
+  known_advisory: 1.2 draft
+  use: secure SDLC
+- id: NIST-CSF
+  name: Cybersecurity Framework
+  authority: NIST
+  pinned_version: '2.0'
+  status: final
+  use: security governance
+- id: OWASP-ASVS
+  name: Application Security Verification Standard
+  authority: OWASP
+  pinned_version: 5.0.0
+  status: stable
+  use: application security
+- id: OWASP-TOP10
+  name: OWASP Top 10
+  authority: OWASP
+  pinned_version: '2025'
+  status: stable
+  use: risk awareness
+- id: OWASP-API
+  name: API Security Top 10
+  authority: OWASP
+  pinned_version: '2023'
+  status: stable
+  use: API security
+- id: OWASP-WSTG
+  name: Web Security Testing Guide
+  authority: OWASP
+  pinned_version: '4.2'
+  status: stable
+  known_advisory: 5.0 development
+  use: security testing
+- id: OWASP-MASVS
+  name: Mobile Application Security Verification Standard
+  authority: OWASP
+  pinned_version: latest verified stable
+  status: resolve-at-runtime
+  use: mobile security
+- id: CIS-CONTROLS
+  name: CIS Controls
+  authority: Center for Internet Security
+  pinned_version: '8.1'
+  status: published
+  use: security safeguards
+- id: CWE
+  name: Common Weakness Enumeration
+  authority: MITRE
+  pinned_version: latest verified release
+  status: resolve-at-runtime
+  use: weakness taxonomy
+- id: CVSS
+  name: Common Vulnerability Scoring System
+  authority: FIRST
+  pinned_version: '4.0'
+  status: published
+  use: vulnerability severity
+- id: WCAG
+  name: Web Content Accessibility Guidelines
+  authority: W3C
+  pinned_version: '2.2'
+  status: recommendation
+  use: accessibility
+- id: NIST-AI-RMF
+  name: AI Risk Management Framework
+  authority: NIST
+  pinned_version: '1.0'
+  status: published
+  use: AI risk
+- id: OWASP-LLM
+  name: OWASP Top 10 for LLM and GenAI Applications
+  authority: OWASP
+  pinned_version: '2025'
+  status: published
+  use: GenAI security
+- id: SLSA
+  name: Supply-chain Levels for Software Artifacts
+  authority: OpenSSF
+  pinned_version: latest verified stable
+  status: resolve-at-runtime
+  use: build integrity
+- id: CYCLONEDX
+  name: CycloneDX
+  authority: OWASP
+  pinned_version: latest verified stable
+  status: resolve-at-runtime
+  use: SBOM
+- id: SPDX
+  name: Software Package Data Exchange
+  authority: Linux Foundation/ISO
+  pinned_version: latest verified stable
+  status: resolve-at-runtime
+  use: SBOM
+- id: OTEL
+  name: OpenTelemetry Specification
+  authority: CNCF
+  pinned_version: latest verified stable
+  status: resolve-at-runtime
+  use: telemetry
+- id: GDPR
+  name: General Data Protection Regulation
+  authority: European Union
+  pinned_version: Regulation (EU) 2016/679 consolidated official text
+  status: in-force
+  use: EU privacy overlay
+- id: EU-AI-ACT
+  name: EU Artificial Intelligence Act
+  authority: European Union
+  pinned_version: Regulation (EU) 2024/1689
+  status: phased application
+  use: EU AI overlay
+- id: US-NIST-PRIVACY
+  name: NIST Privacy Framework
+  authority: NIST
+  pinned_version: '1.0'
+  status: published
+  use: US privacy engineering
+- id: US-CCPA-CPRA
+  name: California Consumer Privacy Act as amended
+  authority: State of California
+  pinned_version: latest official consolidated requirements
+  status: resolve-at-runtime
+  use: California privacy overlay
+- id: AU-PRIVACY
+  name: Privacy Act and Australian Privacy Principles
+  authority: Australian Government/OAIC
+  pinned_version: latest official in-force text
+  status: resolve-at-runtime
+  use: Australian privacy overlay

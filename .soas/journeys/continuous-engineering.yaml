@@ -1,0 +1,22 @@
+id: JRN-CONTINUOUS
+name: Continuous Engineering Journey
+profiles:
+- guided-engineer
+- lead-peer
+purpose: Apply proportional assurance throughout ongoing delivery.
+triggers:
+- material pull request
+- architecture decision
+- dependency change
+- infrastructure change
+- release candidate
+- incident learning
+stages:
+- - scope
+  - - SOAS-DISC-CHANGE
+- - assess
+  - - dynamic:capability-selection
+- - verify
+  - - SOAS-QUAL-CHANGE-VERIFICATION
+- - record
+  - - SOAS-GOV-TRACEABILITY

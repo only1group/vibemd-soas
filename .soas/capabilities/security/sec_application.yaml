@@ -1,0 +1,73 @@
+id: SOAS-SEC-APPLICATION
+name: Application Security
+version: 1.0.0
+category: security
+purpose: Assure web and service security controls using evidence-based verification.
+profiles:
+- guided-engineer
+- lead-peer
+scopes:
+- repository
+- component
+- environment
+- change-set
+inputs:
+  required:
+  - source
+  - configuration
+  - tests
+  optional:
+  - user context
+  - organisation standards
+  - jurisdiction overlay
+frameworks:
+  normative:
+  - OWASP-ASVS
+  - OWASP-TOP10
+  - OWASP-WSTG
+  - CWE
+  conditional:
+  - JUR-AU
+  - JUR-US
+  - JUR-EU
+  rule: activate jurisdiction overlays only where relevant; no industry frameworks
+activities:
+- inspect available evidence before asking questions
+- assess application security against project requirements and selected authoritative
+  criteria
+- identify material strengths, gaps, assumptions and limitations
+- create evidence-linked findings with remediation and verification procedures
+- adapt explanation to the selected profile without changing assurance depth
+questions:
+- ask_when: material evidence gap remains
+  instruction: Ask the minimum question needed to remove the uncertainty and explain
+    why it matters.
+evidence:
+  minimum:
+  - source reference
+  - observation
+  - reliability
+  - timestamp or commit
+  - limitations
+  prohibit:
+  - secret values
+  - unsupported compliance claims
+outputs:
+  required:
+  - application security report
+  - security findings
+  - execution manifest update
+  - evidence register update
+  finding_format: schemas/finding.schema.json
+exit_criteria:
+- scope assessed
+- material evidence gaps recorded
+- findings are evidence-linked
+- standards versions recorded
+- next action recommended
+severity_model:
+  critical: credible severe impact or release blocker
+  high: material risk requiring prompt action
+  medium: important weakness with bounded impact
+  low: improvement or limited risk
+  informational: context or positive observation

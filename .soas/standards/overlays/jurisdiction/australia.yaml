@@ -1,0 +1,17 @@
+id: JUR-AU
+name: Australia privacy and general security overlay
+activation:
+- users, data subjects or operations in Australia
+- contractual requirement
+includes:
+- Privacy Act 1988 and Australian Privacy Principles
+- Notifiable Data Breaches scheme
+- OAIC privacy guidance
+- ASD secure-by-design and general cyber guidance where relevant
+excludes:
+- APRA
+- ASIC
+- SOCI sector obligations
+- industry-specific regulation
+legal_note: Engineering guidance only; confirm legal applicability with qualified
+  counsel.

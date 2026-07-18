@@ -1,0 +1,17 @@
+id: JRN-CLOSURE
+name: Remediation and Closure Journey
+profiles:
+- guided-engineer
+- lead-peer
+purpose: Remediate and independently verify findings.
+stages:
+- - select
+  - - SOAS-GOV-FINDINGS
+- - plan
+  - - SOAS-ENG-REMEDIATION
+- - implement
+  - - permission-required
+- - verify
+  - - capability-rerun
+- - close
+  - - SOAS-GOV-CLOSURE

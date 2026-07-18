@@ -1,0 +1,11 @@
+execution_id: SOAS-YYYYMMDD-NNN
+soas_version: 4.0.0
+started_at: ISO-8601
+profile: guided-engineer|lead-peer
+intent: journey|capability|change|release|closure
+scope: {}
+capabilities: []
+standards_resolution: []
+assumptions: []
+limitations: []
+status: planned

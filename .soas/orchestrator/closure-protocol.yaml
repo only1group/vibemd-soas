@@ -1,0 +1,15 @@
+closure_requires:
+- original finding
+- remediation evidence
+- verification procedure executed
+- result recorded
+- residual risk assessed
+statuses:
+- open
+- planned
+- in-progress
+- ready-for-verification
+- closed
+- accepted-risk
+- reopened
+rule: the implementer must not assert closure without verification evidence

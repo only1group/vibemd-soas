@@ -1,0 +1,19 @@
+id: JUR-US
+name: United States privacy and general security overlay
+activation:
+- users, data subjects or operations in the United States
+- contractual requirement
+includes:
+- NIST Privacy Framework
+- FTC privacy and security principles
+- applicable state comprehensive privacy laws beginning with CCPA/CPRA where scope
+  applies
+- state breach notification discovery
+excludes:
+- HIPAA
+- GLBA
+- FERPA
+- FedRAMP
+- industry-specific federal regimes
+legal_note: US privacy law is federal-and-state specific. SOAS must identify uncertainty
+  and request legal confirmation.

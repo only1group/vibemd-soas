@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SOAS Execution",
+  "type": "object",
+  "required": [
+    "execution_id",
+    "soas_version",
+    "started_at",
+    "profile",
+    "intent",
+    "scope",
+    "capabilities",
+    "standards_resolution"
+  ],
+  "properties": {
+    "execution_id": {
+      "type": "string"
+    },
+    "soas_version": {
+      "type": "string"
+    },
+    "started_at": {
+      "type": "string"
+    },
+    "profile": {
+      "type": "string"
+    },
+    "intent": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "capabilities": {
+      "type": "array"
+    },
+    "standards_resolution": {
+      "type": "array"
+    },
+    "limitations": {
+      "type": "array"
+    }
+  }
+}

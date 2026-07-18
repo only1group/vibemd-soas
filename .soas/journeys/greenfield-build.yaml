@@ -1,0 +1,45 @@
+id: JRN-GREENFIELD
+name: Greenfield Build Journey
+profiles:
+- guided-engineer
+- lead-peer
+purpose: Take a product from idea through design, implementation, deployment and production
+  readiness.
+stages:
+- - discovery
+  - - SOAS-DISC-PROJECT
+    - SOAS-DISC-REPOSITORY
+    - SOAS-PROD-OUTCOMES
+- - definition
+  - - SOAS-REQ-FUNCTIONAL
+    - SOAS-REQ-QUALITY
+    - SOAS-REQ-RISK
+- - design
+  - - SOAS-ARCH-SOLUTION
+    - SOAS-ARCH-DATA
+    - SOAS-ARCH-INTEGRATION
+    - SOAS-UX-EXPERIENCE
+- - foundation
+  - - SOAS-ENG-STANDARDS
+    - SOAS-SEC-THREAT-MODEL
+    - SOAS-INF-CLOUD
+    - SOAS-AUTO-CICD
+    - SOAS-DOC-BASELINE
+- - build
+  - - SOAS-ENG-CODE-QUALITY
+    - SOAS-QUAL-TEST-STRATEGY
+    - SOAS-SEC-APPLICATION
+    - SOAS-SEC-SUPPLY-CHAIN
+- - verify
+  - - SOAS-QUAL-TEST-EFFECTIVENESS
+    - SOAS-PERF-CAPACITY
+    - SOAS-RES-FAILURE
+    - SOAS-ACC-WCAG
+- - release
+  - - SOAS-OPS-OBSERVABILITY
+    - SOAS-OPS-INCIDENT
+    - SOAS-REL-PRODUCTION
+rules:
+- do not advance past unresolved critical gates
+- tailor depth to risk and assurance target
+- create and maintain ADRs, registers and implementation prompts

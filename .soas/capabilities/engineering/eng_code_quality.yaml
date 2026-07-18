@@ -1,0 +1,70 @@
+id: SOAS-ENG-CODE-QUALITY
+name: Code Quality
+version: 1.0.0
+category: engineering
+purpose: Assess correctness signals, readability, duplication, complexity and unsafe
+  patterns.
+profiles:
+- guided-engineer
+- lead-peer
+scopes:
+- repository
+- component
+- environment
+- change-set
+inputs:
+  required:
+  - source
+  - static analysis
+  optional:
+  - user context
+  - organisation standards
+  - jurisdiction overlay
+frameworks:
+  normative:
+  - ISO-25010
+  - CWE
+  conditional:
+  - JUR-AU
+  - JUR-US
+  - JUR-EU
+  rule: activate jurisdiction overlays only where relevant; no industry frameworks
+activities:
+- inspect available evidence before asking questions
+- assess code quality against project requirements and selected authoritative criteria
+- identify material strengths, gaps, assumptions and limitations
+- create evidence-linked findings with remediation and verification procedures
+- adapt explanation to the selected profile without changing assurance depth
+questions:
+- ask_when: material evidence gap remains
+  instruction: Ask the minimum question needed to remove the uncertainty and explain
+    why it matters.
+evidence:
+  minimum:
+  - source reference
+  - observation
+  - reliability
+  - timestamp or commit
+  - limitations
+  prohibit:
+  - secret values
+  - unsupported compliance claims
+outputs:
+  required:
+  - code quality report
+  - findings register
+  - execution manifest update
+  - evidence register update
+  finding_format: schemas/finding.schema.json
+exit_criteria:
+- scope assessed
+- material evidence gaps recorded
+- findings are evidence-linked
+- standards versions recorded
+- next action recommended
+severity_model:
+  critical: credible severe impact or release blocker
+  high: material risk requiring prompt action
+  medium: important weakness with bounded impact
+  low: improvement or limited risk
+  informational: context or positive observation

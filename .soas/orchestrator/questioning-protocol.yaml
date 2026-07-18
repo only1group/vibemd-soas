@@ -1,0 +1,10 @@
+rules:
+- inspect before asking
+- ask one material question at a time for guided users
+- bundle concise evidence gaps for senior users
+- state why the answer matters
+- record material answers as evidence or assumptions
+avoid:
+- questions already answered by repository evidence
+- large questionnaires before discovery
+- false precision

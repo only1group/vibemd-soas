@@ -1,0 +1,13 @@
+minimum_fields:
+- source
+- location
+- collected_at
+- collector
+- reliability
+- supports
+- limitations
+rules:
+- preserve source references
+- distinguish observed from inferred
+- do not expose secrets in reports
+- redact personal data where unnecessary

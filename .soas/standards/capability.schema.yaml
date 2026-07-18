@@ -1,0 +1,18 @@
+required:
+  - id
+  - name
+  - version
+  - category
+  - purpose
+  - profiles
+  - scopes
+  - inputs
+  - activities
+  - evidence
+  - outputs
+  - exit_criteria
+fields:
+  frameworks: normative, advisory and conditional authoritative sources
+  dependencies: other capabilities required before or during execution
+  questions: ask only when evidence cannot resolve the issue
+  severity_model: how findings are prioritised

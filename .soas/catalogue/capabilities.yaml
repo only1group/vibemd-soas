@@ -1,0 +1,553 @@
+catalogue_version: 1.0.0
+count: 72
+capabilities:
+- id: SOAS-DISC-PROJECT
+  name: Project Discovery
+  category: discovery
+  path: capabilities/discovery/disc_project.yaml
+  keywords:
+  - project
+  - discovery
+- id: SOAS-DISC-REPOSITORY
+  name: Repository Discovery
+  category: discovery
+  path: capabilities/discovery/disc_repository.yaml
+  keywords:
+  - repository
+  - discovery
+- id: SOAS-DISC-ARCHITECTURE
+  name: Architecture Discovery
+  category: discovery
+  path: capabilities/discovery/disc_architecture.yaml
+  keywords:
+  - architecture
+  - discovery
+- id: SOAS-DISC-INFRASTRUCTURE
+  name: Infrastructure Discovery
+  category: discovery
+  path: capabilities/discovery/disc_infrastructure.yaml
+  keywords:
+  - infrastructure
+  - discovery
+- id: SOAS-DISC-CHANGE
+  name: Change Discovery
+  category: discovery
+  path: capabilities/discovery/disc_change.yaml
+  keywords:
+  - change
+  - discovery
+- id: SOAS-PROD-OUTCOMES
+  name: Product Outcomes
+  category: product
+  path: capabilities/product/prod_outcomes.yaml
+  keywords:
+  - outcomes
+  - product
+- id: SOAS-PROD-FEASIBILITY
+  name: Product Feasibility
+  category: product
+  path: capabilities/product/prod_feasibility.yaml
+  keywords:
+  - feasibility
+  - product
+- id: SOAS-REQ-FUNCTIONAL
+  name: Functional Requirements
+  category: requirements
+  path: capabilities/requirements/req_functional.yaml
+  keywords:
+  - functional
+  - requirements
+- id: SOAS-REQ-QUALITY
+  name: Quality Attributes
+  category: requirements
+  path: capabilities/requirements/req_quality.yaml
+  keywords:
+  - requirements
+  - attributes
+  - quality
+- id: SOAS-REQ-RISK
+  name: Requirements Risk
+  category: requirements
+  path: capabilities/requirements/req_risk.yaml
+  keywords:
+  - risk
+  - requirements
+- id: SOAS-ARCH-SOLUTION
+  name: Solution Architecture
+  category: architecture
+  path: capabilities/architecture/arch_solution.yaml
+  keywords:
+  - architecture
+  - solution
+- id: SOAS-ARCH-TRADEOFFS
+  name: Architecture Trade-offs
+  category: architecture
+  path: capabilities/architecture/arch_tradeoffs.yaml
+  keywords:
+  - trade
+  - architecture
+  - offs
+- id: SOAS-ARCH-DATA
+  name: Data Architecture
+  category: architecture
+  path: capabilities/architecture/arch_data.yaml
+  keywords:
+  - data
+  - architecture
+- id: SOAS-ARCH-INTEGRATION
+  name: Integration Architecture
+  category: architecture
+  path: capabilities/architecture/arch_integration.yaml
+  keywords:
+  - integration
+  - architecture
+- id: SOAS-ARCH-EVOLUTION
+  name: Evolution Architecture
+  category: architecture
+  path: capabilities/architecture/arch_evolution.yaml
+  keywords:
+  - architecture
+  - evolution
+- id: SOAS-ENG-STANDARDS
+  name: Engineering Standards
+  category: engineering
+  path: capabilities/engineering/eng_standards.yaml
+  keywords:
+  - standards
+  - engineering
+- id: SOAS-ENG-CODE-QUALITY
+  name: Code Quality
+  category: engineering
+  path: capabilities/engineering/eng_code_quality.yaml
+  keywords:
+  - quality
+  - engineering
+  - code
+- id: SOAS-ENG-MAINTAINABILITY
+  name: Maintainability
+  category: engineering
+  path: capabilities/engineering/eng_maintainability.yaml
+  keywords:
+  - maintainability
+  - engineering
+- id: SOAS-ENG-ERROR-HANDLING
+  name: Error Handling
+  category: engineering
+  path: capabilities/engineering/eng_error_handling.yaml
+  keywords:
+  - handling
+  - error
+  - engineering
+- id: SOAS-ENG-REMEDIATION
+  name: Remediation Engineering
+  category: engineering
+  path: capabilities/engineering/eng_remediation.yaml
+  keywords:
+  - engineering
+  - remediation
+- id: SOAS-SEC-THREAT-MODEL
+  name: Threat Modelling
+  category: security
+  path: capabilities/security/sec_threat_model.yaml
+  keywords:
+  - modelling
+  - threat
+  - security
+- id: SOAS-SEC-APPLICATION
+  name: Application Security
+  category: security
+  path: capabilities/security/sec_application.yaml
+  keywords:
+  - application
+  - security
+- id: SOAS-SEC-API
+  name: API Security
+  category: security
+  path: capabilities/security/sec_api.yaml
+  keywords:
+  - api
+  - security
+- id: SOAS-SEC-IDENTITY
+  name: Identity and Access
+  category: security
+  path: capabilities/security/sec_identity.yaml
+  keywords:
+  - identity
+  - and
+  - access
+  - security
+- id: SOAS-SEC-AUTHORIZATION
+  name: Authorisation
+  category: security
+  path: capabilities/security/sec_authorization.yaml
+  keywords:
+  - authorisation
+  - security
+- id: SOAS-SEC-SECRETS
+  name: Secrets and Cryptography
+  category: security
+  path: capabilities/security/sec_secrets.yaml
+  keywords:
+  - cryptography
+  - secrets
+  - and
+  - security
+- id: SOAS-SEC-INFRASTRUCTURE
+  name: Infrastructure Security
+  category: security
+  path: capabilities/security/sec_infrastructure.yaml
+  keywords:
+  - infrastructure
+  - security
+- id: SOAS-SEC-SUPPLY-CHAIN
+  name: Software Supply Chain
+  category: security
+  path: capabilities/security/sec_supply_chain.yaml
+  keywords:
+  - supply
+  - software
+  - chain
+  - security
+- id: SOAS-SEC-MOBILE
+  name: Mobile Security
+  category: security
+  path: capabilities/security/sec_mobile.yaml
+  keywords:
+  - mobile
+  - security
+- id: SOAS-INF-CLOUD
+  name: Cloud Architecture
+  category: infrastructure
+  path: capabilities/infrastructure/inf_cloud.yaml
+  keywords:
+  - cloud
+  - architecture
+  - infrastructure
+- id: SOAS-INF-IAC
+  name: Infrastructure as Code
+  category: infrastructure
+  path: capabilities/infrastructure/inf_iac.yaml
+  keywords:
+  - code
+  - as
+  - infrastructure
+- id: SOAS-INF-NETWORK
+  name: Network Architecture
+  category: infrastructure
+  path: capabilities/infrastructure/inf_network.yaml
+  keywords:
+  - architecture
+  - network
+  - infrastructure
+- id: SOAS-INF-CONTAINERS
+  name: Containers and Orchestration
+  category: infrastructure
+  path: capabilities/infrastructure/inf_containers.yaml
+  keywords:
+  - containers
+  - and
+  - orchestration
+  - infrastructure
+- id: SOAS-DATA-MODEL
+  name: Data Model
+  category: data
+  path: capabilities/data/data_model.yaml
+  keywords:
+  - data
+  - model
+- id: SOAS-DATA-INTEGRITY
+  name: Data Integrity
+  category: data
+  path: capabilities/data/data_integrity.yaml
+  keywords:
+  - integrity
+  - data
+- id: SOAS-DATA-PRIVACY
+  name: Privacy Engineering
+  category: data
+  path: capabilities/data/data_privacy.yaml
+  keywords:
+  - privacy
+  - data
+  - engineering
+- id: SOAS-DATA-MIGRATION
+  name: Data Migration
+  category: data
+  path: capabilities/data/data_migration.yaml
+  keywords:
+  - migration
+  - data
+- id: SOAS-DATA-PERFORMANCE
+  name: Database Performance
+  category: data
+  path: capabilities/data/data_performance.yaml
+  keywords:
+  - data
+  - database
+  - performance
+- id: SOAS-AI-ARCHITECTURE
+  name: AI Architecture
+  category: ai
+  path: capabilities/ai/ai_architecture.yaml
+  keywords:
+  - ai
+  - architecture
+- id: SOAS-AI-SECURITY
+  name: AI Security
+  category: ai
+  path: capabilities/ai/ai_security.yaml
+  keywords:
+  - ai
+  - security
+- id: SOAS-AI-QUALITY
+  name: AI Quality and Evaluation
+  category: ai
+  path: capabilities/ai/ai_quality.yaml
+  keywords:
+  - ai
+  - and
+  - evaluation
+  - quality
+- id: SOAS-AI-GOVERNANCE
+  name: AI Governance
+  category: ai
+  path: capabilities/ai/ai_governance.yaml
+  keywords:
+  - ai
+  - governance
+- id: SOAS-UX-EXPERIENCE
+  name: User Experience
+  category: ux
+  path: capabilities/ux/ux_experience.yaml
+  keywords:
+  - user
+  - experience
+  - ux
+- id: SOAS-UX-CONTENT
+  name: Content and Interaction
+  category: ux
+  path: capabilities/ux/ux_content.yaml
+  keywords:
+  - content
+  - and
+  - ux
+  - interaction
+- id: SOAS-UX-RESPONSIVE
+  name: Responsive Experience
+  category: ux
+  path: capabilities/ux/ux_responsive.yaml
+  keywords:
+  - responsive
+  - experience
+  - ux
+- id: SOAS-ACC-WCAG
+  name: Accessibility
+  category: accessibility
+  path: capabilities/accessibility/acc_wcag.yaml
+  keywords:
+  - accessibility
+- id: SOAS-QUAL-TEST-STRATEGY
+  name: Test Strategy
+  category: quality
+  path: capabilities/quality/qual_test_strategy.yaml
+  keywords:
+  - strategy
+  - test
+  - quality
+- id: SOAS-QUAL-TEST-EFFECTIVENESS
+  name: Test Effectiveness
+  category: quality
+  path: capabilities/quality/qual_test_effectiveness.yaml
+  keywords:
+  - test
+  - effectiveness
+  - quality
+- id: SOAS-QUAL-CHANGE-VERIFICATION
+  name: Change Verification
+  category: quality
+  path: capabilities/quality/qual_change_verification.yaml
+  keywords:
+  - change
+  - verification
+  - quality
+- id: SOAS-PERF-CAPACITY
+  name: Capacity and Load
+  category: performance
+  path: capabilities/performance/perf_capacity.yaml
+  keywords:
+  - load
+  - and
+  - performance
+  - capacity
+- id: SOAS-PERF-FRONTEND
+  name: Frontend Performance
+  category: performance
+  path: capabilities/performance/perf_frontend.yaml
+  keywords:
+  - frontend
+  - performance
+- id: SOAS-PERF-BACKEND
+  name: Backend Performance
+  category: performance
+  path: capabilities/performance/perf_backend.yaml
+  keywords:
+  - backend
+  - performance
+- id: SOAS-RES-FAILURE
+  name: Failure and Resilience
+  category: resilience
+  path: capabilities/resilience/res_failure.yaml
+  keywords:
+  - resilience
+  - failure
+  - and
+- id: SOAS-RES-RECOVERY
+  name: Backup and Recovery
+  category: resilience
+  path: capabilities/resilience/res_recovery.yaml
+  keywords:
+  - resilience
+  - backup
+  - recovery
+  - and
+- id: SOAS-OPS-OBSERVABILITY
+  name: Observability
+  category: operations
+  path: capabilities/operations/ops_observability.yaml
+  keywords:
+  - observability
+  - operations
+- id: SOAS-OPS-INCIDENT
+  name: Incident Readiness
+  category: operations
+  path: capabilities/operations/ops_incident.yaml
+  keywords:
+  - readiness
+  - incident
+  - operations
+- id: SOAS-OPS-RECOVERY
+  name: Operational Recovery
+  category: operations
+  path: capabilities/operations/ops_recovery.yaml
+  keywords:
+  - recovery
+  - operational
+  - operations
+- id: SOAS-OPS-COST
+  name: Cost and Efficiency
+  category: operations
+  path: capabilities/operations/ops_cost.yaml
+  keywords:
+  - cost
+  - efficiency
+  - and
+  - operations
+- id: SOAS-AUTO-CICD
+  name: CI/CD Automation
+  category: automation
+  path: capabilities/automation/auto_cicd.yaml
+  keywords:
+  - automation
+  - ci
+  - cd
+- id: SOAS-AUTO-QUALITY-GATES
+  name: Automated Quality Gates
+  category: automation
+  path: capabilities/automation/auto_quality_gates.yaml
+  keywords:
+  - automation
+  - gates
+  - automated
+  - quality
+- id: SOAS-AUTO-ENVIRONMENTS
+  name: Environment Automation
+  category: automation
+  path: capabilities/automation/auto_environments.yaml
+  keywords:
+  - automation
+  - environment
+- id: SOAS-DOC-BASELINE
+  name: Documentation Baseline
+  category: documentation
+  path: capabilities/documentation/doc_baseline.yaml
+  keywords:
+  - documentation
+  - baseline
+- id: SOAS-DOC-ARCHITECTURE
+  name: Architecture Documentation
+  category: documentation
+  path: capabilities/documentation/doc_architecture.yaml
+  keywords:
+  - documentation
+  - architecture
+- id: SOAS-DOC-DEVELOPER
+  name: Developer Documentation
+  category: documentation
+  path: capabilities/documentation/doc_developer.yaml
+  keywords:
+  - documentation
+  - developer
+- id: SOAS-GOV-RISK
+  name: Engineering Risk
+  category: governance
+  path: capabilities/governance/gov_risk.yaml
+  keywords:
+  - risk
+  - engineering
+  - governance
+- id: SOAS-GOV-DECISIONS
+  name: Architecture Decisions
+  category: governance
+  path: capabilities/governance/gov_decisions.yaml
+  keywords:
+  - decisions
+  - architecture
+  - governance
+- id: SOAS-GOV-TRACEABILITY
+  name: Traceability
+  category: governance
+  path: capabilities/governance/gov_traceability.yaml
+  keywords:
+  - traceability
+  - governance
+- id: SOAS-GOV-FINDINGS
+  name: Findings Management
+  category: governance
+  path: capabilities/governance/gov_findings.yaml
+  keywords:
+  - management
+  - findings
+  - governance
+- id: SOAS-GOV-CLOSURE
+  name: Finding Closure
+  category: governance
+  path: capabilities/governance/gov_closure.yaml
+  keywords:
+  - finding
+  - closure
+  - governance
+- id: SOAS-REL-PRODUCTION
+  name: Production Readiness
+  category: release
+  path: capabilities/release/rel_production.yaml
+  keywords:
+  - production
+  - readiness
+  - release
+- id: SOAS-REL-OPINION
+  name: Independent Assurance Opinion
+  category: release
+  path: capabilities/release/rel_opinion.yaml
+  keywords:
+  - opinion
+  - independent
+  - assurance
+  - release
+- id: SOAS-REL-ROLLBACK
+  name: Release and Rollback
+  category: release
+  path: capabilities/release/rel_rollback.yaml
+  keywords:
+  - rollback
+  - and
+  - release
