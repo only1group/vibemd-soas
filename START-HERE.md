@@ -51,3 +51,9 @@ SOAS writes controlled outputs under `soas-output/<execution-id>/`, including:
 - closure evidence
 
 SOAS must not silently change application code. It may propose or implement remediation only with explicit user permission.
+
+Every execution records the assessed commit and dirty-worktree state, selected
+and excluded capabilities, evidence limitations and capability outcomes.
+`insufficient-evidence`, `not-executed` and `blocked` are never positive
+assurance conclusions. Active testing defaults to non-destructive inspection
+and requires the authorization defined in `orchestrator/active-testing-protocol.yaml`.

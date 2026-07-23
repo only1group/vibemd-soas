@@ -1,0 +1,37 @@
+{
+  "id": "SOAS-F-1004",
+  "title": "Secret embedded in build configuration",
+  "description": "A long-lived deployment credential was embedded in versioned build configuration.",
+  "severity": "high",
+  "confidence": "confirmed",
+  "priority": "immediate",
+  "status": "closed",
+  "affected_scope": {"components": ["deployment-pipeline"], "environments": ["build"], "populations": ["release engineers"]},
+  "evidence": [{
+    "id": "E-1004",
+    "type": "configuration",
+    "source": "repository",
+    "location": ".pipeline/deploy",
+    "observation": "The credential reference was replaced with workload identity; no secret value was retained.",
+    "observed_at": "2026-07-23T00:00:00Z",
+    "subject_version": "2123456789abcdef0123456789abcdef01234567",
+    "reproducibility": "reproduced",
+    "limitations": []
+  }],
+  "risk": {"scenario": "Repository readers reuse deployment credentials.", "likelihood": "unlikely", "exposure": "internal"},
+  "impact": {"observed": null, "potential": "Unauthorized deployment.", "reversibility": "moderate"},
+  "authoritative_basis": [{"standard_id": "NIST-SSDF", "version": "1.1", "reference": "protect development artifacts and credentials", "relationship": "normative"}],
+  "remediation": {"recommendation": "Use short-lived workload identity and rotate the exposed credential.", "acceptance_criteria": ["No long-lived secret is present.", "Old credential is revoked."]},
+  "verification": {
+    "procedure": "Scan history and configuration, then execute deployment with workload identity.",
+    "required_evidence": ["secret scan", "deployment result", "revocation record"],
+    "result": "passed",
+    "verified_at": "2026-07-23T02:00:00Z",
+    "verifier": "security-reviewer",
+    "independence": "independent",
+    "regression_evidence": ["E-1004-regression"],
+    "residual_risk": "Repository history remains access-controlled; the exposed credential is revoked.",
+    "reopen_conditions": ["credential reappears", "workload identity control is bypassed"]
+  },
+  "owner": {"state": "assigned", "identity": "platform-team", "role": "implementer"}
+}

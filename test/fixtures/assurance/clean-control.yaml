@@ -1,0 +1,6 @@
+id: clean-control
+capability: SOAS-QUAL-CHANGE-VERIFICATION
+observed_condition: Positive, negative and regression tests cover the locked change and all pass.
+expected_required_evidence: [diff, tests]
+expected_outcome: satisfied
+expected_finding: false

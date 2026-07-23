@@ -1,1 +1,1 @@
-risk_id,title,likelihood,impact,rating,owner,treatment,status,evidence_reference,updated_at
+risk_id,title,likelihood,impact,exposure,rating,priority,owner,treatment,acceptance_expiry,status,evidence_references,updated_at

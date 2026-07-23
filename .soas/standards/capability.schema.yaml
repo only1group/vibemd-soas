@@ -1,18 +1,175 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://vibemd.example/soas/schemas/capability.schema.yaml
+title: SOAS Capability
+type: object
+additionalProperties: false
 required:
-  - id
-  - name
-  - version
-  - category
-  - purpose
-  - profiles
-  - scopes
-  - inputs
-  - activities
-  - evidence
-  - outputs
-  - exit_criteria
-fields:
-  frameworks: normative, advisory and conditional authoritative sources
-  dependencies: other capabilities required before or during execution
-  questions: ask only when evidence cannot resolve the issue
-  severity_model: how findings are prioritised
+- id
+- name
+- version
+- category
+- purpose
+- profiles
+- scopes
+- scope_signals
+- inputs
+- control_objectives
+- evidence
+- inspection_procedures
+- test_recipes
+- failure_modes
+- outputs
+- exit_criteria
+- frameworks
+- dependencies
+- questions
+- severity_considerations
+properties:
+  id:
+    type: string
+    pattern: ^SOAS-[A-Z0-9]+(?:-[A-Z0-9]+)*$
+  name:
+    type: string
+    minLength: 3
+  version:
+    type: string
+    pattern: ^[0-9]+\.[0-9]+\.[0-9]+$
+  category:
+    type: string
+  purpose:
+    type: string
+    minLength: 20
+  profiles:
+    type: array
+    uniqueItems: true
+    items:
+      enum: [guided-engineer, lead-peer]
+  scopes:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      enum: [repository, component, environment, change-set]
+  scope_signals:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      type: string
+  inputs:
+    type: object
+    additionalProperties: false
+    required: [required, optional]
+    properties:
+      required:
+        type: array
+        items: {type: string}
+      optional:
+        type: array
+        items: {type: string}
+  control_objectives:
+    type: array
+    minItems: 2
+    items:
+      type: object
+      additionalProperties: false
+      required: [id, objective]
+      properties:
+        id:
+          type: string
+          pattern: '^OBJ-[0-9]{2}$'
+        objective: {type: string, minLength: 20}
+  evidence:
+    type: object
+    additionalProperties: false
+    required: [required, optional, sufficiency, prohibit]
+    properties:
+      required:
+        type: array
+        minItems: 2
+        items: {type: string}
+      optional:
+        type: array
+        items: {type: string}
+      sufficiency:
+        type: array
+        minItems: 1
+        items: {type: string}
+      prohibit:
+        type: array
+        items: {type: string}
+  inspection_procedures:
+    type: array
+    minItems: 1
+    items: {type: string}
+  test_recipes:
+    type: object
+    additionalProperties: false
+    required: [positive, negative]
+    properties:
+      positive:
+        type: array
+        minItems: 1
+        items: {type: string}
+      negative:
+        type: array
+        minItems: 1
+        items: {type: string}
+  failure_modes:
+    type: array
+    minItems: 2
+    items: {type: string}
+  outputs:
+    type: object
+    additionalProperties: false
+    required: [required, required_content, finding_format]
+    properties:
+      required:
+        type: array
+        minItems: 1
+        items: {type: string}
+      required_content:
+        type: array
+        minItems: 1
+        items: {type: string}
+      finding_format:
+        const: schemas/finding.schema.json
+  exit_criteria:
+    type: array
+    minItems: 2
+    items: {type: string}
+  frameworks:
+    type: object
+    additionalProperties: false
+    required: [normative, advisory, conditional, rule]
+    properties:
+      normative:
+        type: array
+        items: {type: string}
+      advisory:
+        type: array
+        items: {type: string}
+      conditional:
+        type: array
+        items: {type: string}
+      rule: {type: string}
+  dependencies:
+    type: array
+    uniqueItems: true
+    items:
+      type: string
+      pattern: ^SOAS-[A-Z0-9]+(?:-[A-Z0-9]+)*$
+  questions:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      additionalProperties: false
+      required: [ask_when, instruction]
+      properties:
+        ask_when: {type: string}
+        instruction: {type: string}
+  severity_considerations:
+    type: array
+    minItems: 1
+    items: {type: string}

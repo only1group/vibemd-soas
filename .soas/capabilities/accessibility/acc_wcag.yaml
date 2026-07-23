@@ -1,6 +1,7 @@
+---
 id: SOAS-ACC-WCAG
 name: Accessibility
-version: 1.0.0
+version: 2.0.0
 category: accessibility
 purpose: Assess WCAG 2.2 conformance risks using automated, source and human review.
 profiles:
@@ -11,6 +12,10 @@ scopes:
 - component
 - environment
 - change-set
+scope_signals:
+- web-ui
+- mobile-client
+- desktop-client
 inputs:
   required:
   - UI source
@@ -19,50 +24,90 @@ inputs:
   - user context
   - organisation standards
   - jurisdiction overlay
-frameworks:
-  normative:
-  - WCAG
-  conditional:
-  - JUR-AU
-  - JUR-US
-  - JUR-EU
-  rule: activate jurisdiction overlays only where relevant; no industry frameworks
-activities:
-- inspect available evidence before asking questions
-- assess accessibility against project requirements and selected authoritative criteria
-- identify material strengths, gaps, assumptions and limitations
-- create evidence-linked findings with remediation and verification procedures
-- adapt explanation to the selected profile without changing assurance depth
-questions:
-- ask_when: material evidence gap remains
-  instruction: Ask the minimum question needed to remove the uncertainty and explain
-    why it matters.
+control_objectives:
+- id: OBJ-01
+  objective: Assess WCAG 2.2 conformance risks using automated, source and human review;
+    establish the exact subject, version and boundary assessed.
+- id: OBJ-02
+  objective: Demonstrate accessibility behavior using UI source, rendered app and
+    evidence fitted to the claim.
+- id: OBJ-03
+  objective: Identify unsafe assumptions and show how accessibility failures are detected,
+    contained and recovered.
 evidence:
-  minimum:
-  - source reference
-  - observation
-  - reliability
-  - timestamp or commit
-  - limitations
+  required:
+  - UI source
+  - rendered app
+  - rendered states at supported breakpoints
+  - keyboard and assistive-technology observations
+  - immutable subject version or commit
+  optional:
+  - user context
+  - organisation standards
+  - jurisdiction overlay
+  sufficiency:
+  - Each applicable control objective has current, scope-matched evidence.
+  - At least one positive and one negative procedure is executed or an explicit authorized
+    absence reason is recorded.
+  - Conflicting or weak evidence is resolved or retained as a limitation; missing
+    evidence cannot produce satisfied.
   prohibit:
   - secret values
-  - unsupported compliance claims
+  - unnecessary personal data
+  - unsupported legal or standards compliance claims
+inspection_procedures:
+- Inspect semantic structure, focus order, names, roles, states, contrast and reflow.
+- Query repository and runtime evidence for UI source, rendered app; record source,
+  location, time and subject version.
+- Compare observed behavior with WCAG without treating automated checks as compliance.
+test_recipes:
+  positive:
+  - Complete representative tasks using keyboard-only navigation and an accessibility
+    tree.
+  - 'Confirm required outputs include evidence and objective references: accessibility
+    report, remediation register, execution manifest update, evidence register update.'
+  negative:
+  - Exercise validation errors, zoom/reflow and missing-label states without relying
+    on colour or pointer input.
+failure_modes:
+- Automated scans pass while task-critical manual barriers remain
+- A component is accessible in isolation but loses semantics after composition
+- Accessibility is assessed against documentation that does not match the implemented
+  subject version.
 outputs:
   required:
   - accessibility report
   - remediation register
   - execution manifest update
   - evidence register update
+  required_content:
+  - assessed scope and immutable subject version
+  - objective-level evidence references and outcome
+  - findings, limitations, residual uncertainty and required next action
   finding_format: schemas/finding.schema.json
 exit_criteria:
-- scope assessed
-- material evidence gaps recorded
-- findings are evidence-linked
-- standards versions recorded
-- next action recommended
-severity_model:
-  critical: credible severe impact or release blocker
-  high: material risk requiring prompt action
-  medium: important weakness with bounded impact
-  low: improvement or limited risk
-  informational: context or positive observation
+- Every applicable objective has an outcome and evidence references.
+- Required outputs exist or have an explicit absence reason.
+- Negative and positive procedures are recorded with results or authorization limitations.
+- No insufficient-evidence, not-executed or blocked objective is represented as satisfied.
+frameworks:
+  normative:
+  - WCAG
+  advisory: []
+  conditional:
+  - JUR-AU
+  - JUR-US
+  - JUR-EU
+  rule: activate jurisdiction overlays only where relevant; no industry frameworks
+dependencies: []
+questions:
+- ask_when: repository and runtime evidence cannot establish a material accessibility
+    boundary or expected behavior
+  instruction: Ask for the smallest missing fact needed to decide an objective; record
+    the answer as reported evidence or an assumption.
+severity_considerations:
+- Calibrate impact, exposure, affected users or tenants, detectability, reversibility
+  and release-gating effect.
+- For accessibility, increase concern when failure crosses a trust, tenant, data,
+  safety or recovery boundary.
+- Record confidence and priority separately from severity.

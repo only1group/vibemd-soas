@@ -1,9 +1,14 @@
 id: JUR-EU
 name: European privacy and general security overlay
 activation:
-- EU or EEA data subjects or operations
+- EU or EEA establishment or processing operations
+- EU or EEA data subjects where offering or monitoring facts establish applicability
 - offering goods or services into the EU/EEA
 - contractual requirement
+evidence_required:
+- establishment and controller/processor relationships
+- processing purposes, locations and data-subject populations
+- markets, monitoring activities and relevant contracts
 includes:
 - GDPR
 - ePrivacy discovery

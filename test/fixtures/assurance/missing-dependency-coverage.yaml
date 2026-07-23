@@ -1,0 +1,7 @@
+id: missing-dependency-coverage
+capability: SOAS-SEC-SUPPLY-CHAIN
+observed_condition: Production dependencies are absent from inventory and scanning.
+expected_required_evidence: [manifests, pipelines]
+expected_outcome: finding-raised
+expected_finding: true
+expected_severity: high

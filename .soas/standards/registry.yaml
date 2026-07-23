@@ -1,4 +1,5 @@
-registry_version: 1.0.0
+---
+registry_version: 2.0.0
 last_verified: '2026-07-18'
 selection_policy: latest official final; drafts advisory only
 standards:
@@ -8,18 +9,39 @@ standards:
   pinned_version: '2023'
   status: published
   use: quality model
+  official_source: https://www.iso.org/standard/78176.html
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: ISO-42010
   name: Architecture description
   authority: ISO/IEC/IEEE
   pinned_version: '2022'
   status: published
   use: architecture
+  official_source: https://www.iso.org/standard/74393.html
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: ISO-29148
   name: Requirements engineering
   authority: ISO/IEC/IEEE
   pinned_version: '2018'
   status: published
   use: requirements
+  official_source: https://www.iso.org/standard/72089.html
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: NIST-SSDF
   name: Secure Software Development Framework
   authority: NIST
@@ -27,30 +49,65 @@ standards:
   status: final
   known_advisory: 1.2 draft
   use: secure SDLC
+  official_source: https://csrc.nist.gov/pubs/sp/800/218/final
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: NIST-CSF
   name: Cybersecurity Framework
   authority: NIST
   pinned_version: '2.0'
   status: final
   use: security governance
+  official_source: https://www.nist.gov/cyberframework
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: OWASP-ASVS
   name: Application Security Verification Standard
   authority: OWASP
   pinned_version: 5.0.0
   status: stable
   use: application security
+  official_source: https://owasp.org/www-project-application-security-verification-standard/
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: OWASP-TOP10
   name: OWASP Top 10
   authority: OWASP
   pinned_version: '2025'
   status: stable
   use: risk awareness
+  official_source: https://owasp.org/www-project-top-ten/
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: OWASP-API
   name: API Security Top 10
   authority: OWASP
   pinned_version: '2023'
   status: stable
   use: API security
+  official_source: https://owasp.org/API-Security/
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: OWASP-WSTG
   name: Web Security Testing Guide
   authority: OWASP
@@ -58,99 +115,264 @@ standards:
   status: stable
   known_advisory: 5.0 development
   use: security testing
+  official_source: https://owasp.org/www-project-web-security-testing-guide/
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: OWASP-MASVS
   name: Mobile Application Security Verification Standard
   authority: OWASP
   pinned_version: latest verified stable
   status: resolve-at-runtime
   use: mobile security
+  official_source: https://mas.owasp.org/MASVS/
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: CIS-CONTROLS
   name: CIS Controls
   authority: Center for Internet Security
   pinned_version: '8.1'
   status: published
   use: security safeguards
+  official_source: https://www.cisecurity.org/controls
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: CWE
   name: Common Weakness Enumeration
   authority: MITRE
   pinned_version: latest verified release
   status: resolve-at-runtime
   use: weakness taxonomy
+  official_source: https://cwe.mitre.org/
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: CVSS
   name: Common Vulnerability Scoring System
   authority: FIRST
   pinned_version: '4.0'
   status: published
   use: vulnerability severity
+  official_source: https://www.first.org/cvss/
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: WCAG
   name: Web Content Accessibility Guidelines
   authority: W3C
   pinned_version: '2.2'
   status: recommendation
   use: accessibility
+  official_source: https://www.w3.org/TR/WCAG22/
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: NIST-AI-RMF
   name: AI Risk Management Framework
   authority: NIST
   pinned_version: '1.0'
   status: published
   use: AI risk
+  official_source: https://www.nist.gov/itl/ai-risk-management-framework
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: OWASP-LLM
   name: OWASP Top 10 for LLM and GenAI Applications
   authority: OWASP
   pinned_version: '2025'
   status: published
   use: GenAI security
+  official_source: https://genai.owasp.org/llm-top-10/
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: SLSA
   name: Supply-chain Levels for Software Artifacts
   authority: OpenSSF
   pinned_version: latest verified stable
   status: resolve-at-runtime
   use: build integrity
+  official_source: https://slsa.dev/spec/
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: CYCLONEDX
   name: CycloneDX
   authority: OWASP
   pinned_version: latest verified stable
   status: resolve-at-runtime
   use: SBOM
+  official_source: https://cyclonedx.org/specification/overview/
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: SPDX
   name: Software Package Data Exchange
   authority: Linux Foundation/ISO
   pinned_version: latest verified stable
   status: resolve-at-runtime
   use: SBOM
+  official_source: https://spdx.dev/specifications/
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: OTEL
   name: OpenTelemetry Specification
   authority: CNCF
   pinned_version: latest verified stable
   status: resolve-at-runtime
   use: telemetry
+  official_source: https://opentelemetry.io/docs/specs/
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: GDPR
   name: General Data Protection Regulation
   authority: European Union
   pinned_version: Regulation (EU) 2016/679 consolidated official text
   status: in-force
   use: EU privacy overlay
+  official_source: https://eur-lex.europa.eu/eli/reg/2016/679/oj
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: EU-AI-ACT
   name: EU Artificial Intelligence Act
   authority: European Union
   pinned_version: Regulation (EU) 2024/1689
   status: phased application
   use: EU AI overlay
+  official_source: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: US-NIST-PRIVACY
   name: NIST Privacy Framework
   authority: NIST
   pinned_version: '1.0'
   status: published
   use: US privacy engineering
+  official_source: https://www.nist.gov/privacy-framework
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: US-CCPA-CPRA
   name: California Consumer Privacy Act as amended
   authority: State of California
   pinned_version: latest official consolidated requirements
   status: resolve-at-runtime
   use: California privacy overlay
+  official_source: https://oag.ca.gov/privacy/ccpa
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
 - id: AU-PRIVACY
   name: Privacy Act and Australian Privacy Principles
   authority: Australian Government/OAIC
   pinned_version: latest official in-force text
   status: resolve-at-runtime
   use: Australian privacy overlay
+  official_source: https://www.oaic.gov.au/privacy/australian-privacy-principles
+  resolution:
+    resolved_on: '2026-07-18'
+    online_resolution: false
+    limitation: Version metadata migrated from the 4.0 registry; confirm against the
+      official source when internet access is available.
+    snapshot: not-retained
+- id: ISO-31000
+  name: Risk management — Guidelines
+  authority: ISO
+  pinned_version: '2018'
+  status: published
+  use: risk management
+  official_source: https://www.iso.org/standard/65694.html
+  resolution:
+    resolved_on: '2026-07-23'
+    online_resolution: true
+    limitation: ISO indicates that the published 2018 edition is to be revised; re-resolve before use.
+    snapshot: official-page-metadata-only
+- id: ISO-22301
+  name: Security and resilience — Business continuity management systems — Requirements
+  authority: ISO
+  pinned_version: '2019'
+  status: published
+  use: continuity and resilience
+  official_source: https://www.iso.org/standard/75106.html
+  resolution:
+    resolved_on: '2026-07-23'
+    online_resolution: true
+    limitation: Amendment 1:2024 exists and ISO indicates the 2019 edition is to be revised; resolve applicability before use.
+    snapshot: official-page-metadata-only
+- id: ISO-9241
+  name: 'Ergonomics of human-system interaction — Part 210: Human-centred design'
+  authority: ISO
+  pinned_version: '2019'
+  status: published
+  use: human-centred design
+  official_source: https://www.iso.org/standard/77520.html
+  resolution:
+    resolved_on: '2026-07-23'
+    online_resolution: true
+    limitation: Mapping is specifically to ISO 9241-210:2019, not the entire ISO 9241 series.
+    snapshot: official-page-metadata-only
+resolution_policy:
+  required_fields:
+  - pinned_version
+  - status
+  - official_source
+  - resolved_on
+  - online_resolution
+  licensing: Record identifiers and official links; do not copy restricted standards
+    text.
+  offline_behavior: Use the pinned version and record standards-freshness as a limitation.

@@ -1,6 +1,7 @@
+---
 id: SOAS-SEC-API
 name: API Security
-version: 1.0.0
+version: 2.0.0
 category: security
 purpose: Assess authentication, authorisation, object access, rate limits, input handling
   and API inventory.
@@ -12,6 +13,11 @@ scopes:
 - component
 - environment
 - change-set
+scope_signals:
+- public-api
+- identity-provider
+- multi-tenant
+- privileged-users
 inputs:
   required:
   - API contracts
@@ -20,51 +26,94 @@ inputs:
   - user context
   - organisation standards
   - jurisdiction overlay
-frameworks:
-  normative:
-  - OWASP-API
-  - OWASP-ASVS
-  conditional:
-  - JUR-AU
-  - JUR-US
-  - JUR-EU
-  rule: activate jurisdiction overlays only where relevant; no industry frameworks
-activities:
-- inspect available evidence before asking questions
-- assess api security against project requirements and selected authoritative criteria
-- identify material strengths, gaps, assumptions and limitations
-- create evidence-linked findings with remediation and verification procedures
-- adapt explanation to the selected profile without changing assurance depth
-questions:
-- ask_when: material evidence gap remains
-  instruction: Ask the minimum question needed to remove the uncertainty and explain
-    why it matters.
+control_objectives:
+- id: OBJ-01
+  objective: Assess authentication, authorisation, object access, rate limits, input
+    handling and API inventory; establish the exact subject, version and boundary
+    assessed.
+- id: OBJ-02
+  objective: Demonstrate api security behavior using API contracts, source and evidence
+    fitted to the claim.
+- id: OBJ-03
+  objective: Identify unsafe assumptions and show how api security failures are detected,
+    contained and recovered.
 evidence:
-  minimum:
-  - source reference
-  - observation
-  - reliability
-  - timestamp or commit
-  - limitations
+  required:
+  - API contracts
+  - source
+  - threat boundaries, security configuration and dependency inventory
+  - focused authorization, abuse-case and security test results
+  - immutable subject version or commit
+  optional:
+  - user context
+  - organisation standards
+  - jurisdiction overlay
+  sufficiency:
+  - Each applicable control objective has current, scope-matched evidence.
+  - At least one positive and one negative procedure is executed or an explicit authorized
+    absence reason is recorded.
+  - Conflicting or weak evidence is resolved or retained as a limitation; missing
+    evidence cannot produce satisfied.
   prohibit:
   - secret values
-  - unsupported compliance claims
+  - unnecessary personal data
+  - unsupported legal or standards compliance claims
+inspection_procedures:
+- Trace assets, identities, trust boundaries, attacker-controlled input and privileged
+  operations.
+- Query repository and runtime evidence for API contracts, source; record source,
+  location, time and subject version.
+- Compare observed behavior with OWASP-API, OWASP-ASVS without treating automated
+  checks as compliance.
+test_recipes:
+  positive:
+  - Verify permitted operations for representative identities and protected assets.
+  - 'Confirm required outputs include evidence and objective references: API security
+    report, abuse-case tests, execution manifest update, evidence register update.'
+  negative:
+  - Exercise unauthorized, cross-tenant, replay, injection and privilege-transition
+    cases in an approved target.
+failure_modes:
+- Authentication success is mistaken for authorization correctness
+- A secure primary path has an alternate endpoint, job or administrative bypass
+- API Security is assessed against documentation that does not match the implemented
+  subject version.
 outputs:
   required:
   - API security report
   - abuse-case tests
   - execution manifest update
   - evidence register update
+  required_content:
+  - assessed scope and immutable subject version
+  - objective-level evidence references and outcome
+  - findings, limitations, residual uncertainty and required next action
   finding_format: schemas/finding.schema.json
 exit_criteria:
-- scope assessed
-- material evidence gaps recorded
-- findings are evidence-linked
-- standards versions recorded
-- next action recommended
-severity_model:
-  critical: credible severe impact or release blocker
-  high: material risk requiring prompt action
-  medium: important weakness with bounded impact
-  low: improvement or limited risk
-  informational: context or positive observation
+- Every applicable objective has an outcome and evidence references.
+- Required outputs exist or have an explicit absence reason.
+- Negative and positive procedures are recorded with results or authorization limitations.
+- No insufficient-evidence, not-executed or blocked objective is represented as satisfied.
+frameworks:
+  normative:
+  - OWASP-API
+  - OWASP-ASVS
+  advisory: []
+  conditional:
+  - JUR-AU
+  - JUR-US
+  - JUR-EU
+  rule: activate jurisdiction overlays only where relevant; no industry frameworks
+dependencies:
+- SOAS-SEC-THREAT-MODEL
+questions:
+- ask_when: repository and runtime evidence cannot establish a material api security
+    boundary or expected behavior
+  instruction: Ask for the smallest missing fact needed to decide an objective; record
+    the answer as reported evidence or an assumption.
+severity_considerations:
+- Calibrate impact, exposure, affected users or tenants, detectability, reversibility
+  and release-gating effect.
+- For api security, increase concern when failure crosses a trust, tenant, data, safety
+  or recovery boundary.
+- Record confidence and priority separately from severity.

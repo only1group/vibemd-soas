@@ -1,8 +1,14 @@
 id: JUR-AU
 name: Australia privacy and general security overlay
 activation:
-- users, data subjects or operations in Australia
+- establishment or processing operations in Australia
+- Australian data subjects where the processing facts make the law applicable
+- offering into or monitoring an Australian market
 - contractual requirement
+evidence_required:
+- establishment and processor/controller relationships
+- processing locations and data-subject populations
+- markets offered to and relevant contracts
 includes:
 - Privacy Act 1988 and Australian Privacy Principles
 - Notifiable Data Breaches scheme

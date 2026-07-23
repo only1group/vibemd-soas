@@ -1,0 +1,28 @@
+{
+  "id": "SOAS-F-1003",
+  "title": "Recovery exercise exceeds target",
+  "description": "The latest recovery exercise exceeded the declared recovery-time objective.",
+  "severity": "medium",
+  "confidence": "high",
+  "priority": "planned",
+  "status": "accepted-risk",
+  "affected_scope": {"components": ["reporting"], "environments": ["production"], "populations": ["internal analysts"]},
+  "evidence": [{
+    "id": "E-1003",
+    "type": "test-result",
+    "source": "recovery exercise",
+    "location": "evidence/recovery-2026-07",
+    "observation": "Recovery completed in 130 minutes against a 120 minute objective.",
+    "observed_at": "2026-07-23T00:00:00Z",
+    "subject_version": "deployment-2026-07-20",
+    "reproducibility": "reproduced",
+    "limitations": []
+  }],
+  "risk": {"scenario": "Reporting remains unavailable longer than agreed.", "likelihood": "possible", "exposure": "internal"},
+  "impact": {"observed": "Exercise exceeded the target by ten minutes.", "potential": "Delayed internal reporting.", "reversibility": "easy"},
+  "authoritative_basis": [{"standard_id": "ISO-22301", "version": "2019", "reference": "business continuity objectives", "relationship": "advisory"}],
+  "remediation": {"recommendation": "Automate the slow restore step.", "acceptance_criteria": ["A recovery exercise meets the objective."]},
+  "verification": {"procedure": "Repeat the timed exercise.", "required_evidence": ["exercise result"]},
+  "owner": {"state": "assigned", "identity": "operations", "role": "risk owner"},
+  "risk_acceptance": {"approver": "service-owner", "rationale": "Bounded internal impact until scheduled automation.", "expires_at": "2026-10-23T00:00:00Z"}
+}

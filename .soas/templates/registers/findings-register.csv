@@ -1,1 +1,1 @@
-finding_id,title,severity,status,capability,owner,target_date,frameworks,evidence_reference,updated_at
+finding_id,title,severity,confidence,priority,status,capability,owner,owner_state,affected_scope,framework_references,evidence_references,updated_at

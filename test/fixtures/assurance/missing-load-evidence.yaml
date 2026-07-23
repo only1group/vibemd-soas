@@ -1,0 +1,6 @@
+id: missing-load-evidence
+capability: SOAS-PERF-CAPACITY
+observed_condition: A release claims capacity but has no representative load result.
+expected_required_evidence: [workload assumptions, metrics, workload model and service objectives]
+expected_outcome: insufficient-evidence
+expected_finding: false

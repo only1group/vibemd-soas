@@ -1,0 +1,6 @@
+id: incomplete-recovery-evidence
+capability: SOAS-RES-RECOVERY
+observed_condition: Backups are configured but no restore or reconciliation has been exercised.
+expected_required_evidence: [backup config, test records, "backup, restore, failover or game-day results"]
+expected_outcome: insufficient-evidence
+expected_finding: false

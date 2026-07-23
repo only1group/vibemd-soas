@@ -1,0 +1,7 @@
+id: public-unauthenticated-admin
+capability: SOAS-SEC-API
+observed_condition: A public privileged endpoint succeeds without authentication.
+expected_required_evidence: [API contracts, source, "focused authorization, abuse-case and security test results"]
+expected_outcome: finding-raised
+expected_finding: true
+expected_severity: critical

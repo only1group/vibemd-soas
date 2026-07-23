@@ -1,0 +1,14 @@
+version: 1.0.0
+outcomes:
+  satisfied: Every applicable objective has sufficient evidence and no unresolved finding prevents satisfaction.
+  finding-raised: Evidence supports one or more findings; completed work is recorded but the capability is not a positive assurance conclusion.
+  insufficient-evidence: Applicable objectives cannot be decided because evidence is missing, stale, conflicting or unfit.
+  not-executed: The capability was selected but no substantive assessment was performed.
+  not-applicable: Scope evidence establishes that the capability does not apply.
+  blocked: Execution began but an authorization, access, safety or external dependency prevented completion.
+requirements:
+- record evidence against every applicable control objective
+- produce required outputs or record an explicit absence reason
+- record limitations and residual uncertainty
+- use satisfied only when every applicable objective meets its sufficiency rule
+- never translate insufficient-evidence, not-executed or blocked into a pass or positive assurance statement

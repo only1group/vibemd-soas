@@ -1,0 +1,28 @@
+version: 1.0.0
+default: non-destructive inspection
+authorization_record:
+- accountable authorizer
+- exact target and environment
+- permitted techniques
+- time window
+- data classification
+- rate and concurrency limits
+- stop conditions
+- cleanup owner and procedure
+- incident contact
+always_requires_explicit_approval:
+- vulnerability scanning against a live or third-party target
+- exploit attempts or authentication bypass testing
+- load, stress, soak or denial-of-service testing
+- destructive recovery or failover exercises
+- production database or personal-data access
+- actions that can send email, charge payments or trigger third-party side effects
+- use of real secrets, tokens or privileged accounts
+safety_rules:
+- use test environments and synthetic data where possible
+- minimize privilege and isolate test accounts
+- honor provider terms, legal authority and rate limits
+- stop on unexpected production impact, data exposure, cost escalation or scope ambiguity
+- preserve evidence without recording secret values or unnecessary personal data
+- clean up accounts, records, messages, resources and test configuration
+- record activities not executed because authorization was absent

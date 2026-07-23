@@ -1,13 +1,37 @@
+version: 2.0.0
+principle: Evidence is ranked by fitness for the claim, not by source type alone.
 minimum_fields:
+- evidence_id
+- type
 - source
 - location
-- collected_at
+- observed_at
+- subject_version
 - collector
-- reliability
 - supports
 - limitations
+fitness_dimensions:
+  provenance: Is the origin identifiable and trustworthy?
+  subject_and_scope_match: Does it concern the exact component, version and environment?
+  freshness: Is it current enough for the claim?
+  independence: Was it produced independently of the implementation or claim?
+  reproducibility: Can another reviewer reproduce the observation?
+  integrity: Is accidental or deliberate alteration detectable?
+  completeness: Does it cover the applicable objective rather than a narrow happy path?
+  corroboration: Is it consistent with independent evidence?
+assessment:
+- record each dimension as strong, adequate, weak, unknown or not-applicable
+- explain material weak or unknown dimensions
+- do not calculate a numeric score or average away a material weakness
+- prefer the evidence set that best fits the claim and scope
+conflicts:
+- record both sources and the claim in conflict
+- investigate version, environment, timing, sampling and method differences
+- resolve the conflict or retain it as a limitation
+- do not silently discard, average or select the more convenient result
 rules:
 - preserve source references
-- distinguish observed from inferred
-- do not expose secrets in reports
-- redact personal data where unnecessary
+- distinguish observed facts, reported statements and inference
+- never expose secrets in reports
+- redact personal data where it is not necessary
+- do not infer legal or standards compliance from automated checks

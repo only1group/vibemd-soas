@@ -1,11 +1,32 @@
-execution_id: SOAS-YYYYMMDD-NNN
-soas_version: 4.0.0
-started_at: ISO-8601
-profile: guided-engineer|lead-peer
-intent: journey|capability|change|release|closure
-scope: {}
+execution_id: SOAS-20260723-001
+soas_version: 5.0.0
+state: planned
+started_at: '2026-07-23T00:00:00Z'
+profile: guided-engineer
+intent: journey
+repository:
+  location: .
+  commit_sha: '0000000000000000000000000000000000000000'
+  branch: main
+  dirty: false
+scope:
+  included_paths: ['.']
+  excluded_paths: []
+target:
+  environment: repository
+tools: []
 capabilities: []
+dependency_resolution: []
 standards_resolution: []
 assumptions: []
 limitations: []
-status: planned
+unanswered_questions: []
+evidence_register:
+  location: evidence-register.csv
+implementer:
+  identity: unknown
+  role: assessor
+verifier:
+  identity: unknown
+  role: verifier
+  independence: unknown

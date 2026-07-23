@@ -1,0 +1,7 @@
+id: insecure-local-key-storage
+capability: SOAS-SEC-MOBILE
+observed_condition: A long-lived encryption key is stored in application preferences.
+expected_required_evidence: [mobile source, build config]
+expected_outcome: finding-raised
+expected_finding: true
+expected_severity: high

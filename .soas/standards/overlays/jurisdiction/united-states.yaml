@@ -1,8 +1,14 @@
 id: JUR-US
 name: United States privacy and general security overlay
 activation:
-- users, data subjects or operations in the United States
+- establishment or processing operations in the United States
+- state-resident data subjects where thresholds and processing facts establish applicability
+- offering into or monitoring a United States market
 - contractual requirement
+evidence_required:
+- establishment, processing locations and service-provider relationships
+- resident populations, processing purposes and applicable thresholds
+- markets offered to and relevant contracts
 includes:
 - NIST Privacy Framework
 - FTC privacy and security principles

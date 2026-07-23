@@ -1,0 +1,32 @@
+{
+  "id": "SOAS-F-1002",
+  "title": "Tenant filter omitted from export",
+  "description": "The export path did not constrain records to the active tenant.",
+  "severity": "high",
+  "confidence": "confirmed",
+  "priority": "immediate",
+  "status": "ready-for-verification",
+  "affected_scope": {
+    "components": ["export-worker"],
+    "environments": ["production"],
+    "populations": ["tenant administrators"],
+    "tenancies": ["multiple"]
+  },
+  "evidence": [{
+    "id": "E-1002",
+    "type": "source",
+    "source": "repository",
+    "location": "src/export/query",
+    "observation": "The query lacked a tenant predicate before remediation.",
+    "observed_at": "2026-07-23T00:00:00Z",
+    "subject_version": "1123456789abcdef0123456789abcdef01234567",
+    "reproducibility": "reproduced",
+    "limitations": []
+  }],
+  "risk": {"scenario": "A tenant administrator exports another tenant's records.", "likelihood": "possible", "exposure": "partner"},
+  "impact": {"observed": null, "potential": "Cross-tenant data disclosure.", "reversibility": "difficult"},
+  "authoritative_basis": [{"standard_id": "OWASP-ASVS", "version": "5.0.0", "reference": "access control verification requirements", "relationship": "normative"}],
+  "remediation": {"recommendation": "Bind the export query to the authorized tenant.", "acceptance_criteria": ["Cross-tenant export tests are denied."]},
+  "verification": {"procedure": "Execute cross-tenant negative tests against the remediated revision.", "required_evidence": ["independent test result"], "result": "not-run"},
+  "owner": {"state": "assigned", "identity": "delivery-team", "role": "implementer"}
+}

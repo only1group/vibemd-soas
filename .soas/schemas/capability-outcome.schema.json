@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SOAS Capability Outcome",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["capability_id", "outcome", "objectives", "outputs", "limitations", "residual_uncertainty"],
+  "properties": {
+    "capability_id": {"type": "string"},
+    "outcome": {"enum": ["satisfied", "finding-raised", "insufficient-evidence", "not-executed", "not-applicable", "blocked"]},
+    "objectives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["objective_id", "result", "evidence_references"],
+        "properties": {
+          "objective_id": {"type": "string"},
+          "result": {"enum": ["satisfied", "finding-raised", "insufficient-evidence", "not-applicable", "blocked"]},
+          "evidence_references": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "outputs": {"type": "array", "items": {"type": "string"}},
+    "absence_reasons": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "residual_uncertainty": {"type": "array", "items": {"type": "string"}}
+  }
+}

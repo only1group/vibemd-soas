@@ -1,0 +1,28 @@
+version: 1.0.0
+principle: Severity describes consequence and urgency inherent in a finding; it is not confidence, delivery priority or risk acceptance.
+dimensions:
+  impact: safety, confidentiality, integrity, availability, financial and mission consequence
+  likelihood_or_exploitability: preconditions, attacker effort and expected frequency
+  exposure: public, partner, internal, local or isolated
+  affected_population: number of users, records, tenants and privileged actors
+  detectability: likelihood and speed of reliable detection
+  reversibility: recovery complexity, data restoration and irreversible harm
+  regulatory_or_contractual_significance: credible obligations and notification consequences
+  release_gating_effect: whether safe release or operation is prevented
+rubric:
+  critical: Credible catastrophic or broad severe harm, active compromise, irreversible loss, or a mandatory release stop.
+  high: Material harm is plausible with realistic preconditions, affects privileged or multiple-tenant boundaries, or needs prompt correction.
+  medium: Important weakness with bounded scope, meaningful preconditions, or reliable recovery.
+  low: Limited exposure or consequence; defence-in-depth improvement with no credible material harm demonstrated.
+  informational: Context, positive observation or recommendation without a demonstrated risk condition.
+calibration:
+- use the highest well-supported band and document dimensions that drive it
+- lower confidence does not automatically lower severity; record confidence separately
+- priority incorporates delivery sequencing, dependencies and business context
+- risk acceptance is an accountable decision and does not alter severity
+- CVSS may inform exploitability but never determines application severity by itself
+boundary_examples:
+- A public unauthenticated administrative endpoint with tenant-wide access is critical even if no exploitation is observed.
+- A tenant authorization bypass requiring an ordinary account is high; make it critical if it enables broad irreversible harm.
+- Missing load evidence is insufficient-evidence, not automatically a performance defect; raise a finding only when a risky claim or release gate depends on it.
+- A stale internal dependency with no reachable vulnerable path may be low or informational, but the unsupported reachability claim lowers confidence rather than severity.

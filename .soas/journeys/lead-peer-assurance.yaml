@@ -5,6 +5,10 @@ profiles:
 - guided-engineer
 purpose: Provide independent architecture and engineering assurance for an existing
   system.
+scope_resolution:
+  protocol: orchestrator/scope-resolution-protocol.yaml
+  rules: orchestrator/selection-rules.yaml
+  record: schemas/selection-decision.schema.json
 stages:
 - - reconstruct
   - - SOAS-DISC-REPOSITORY
@@ -15,11 +19,11 @@ stages:
     - SOAS-ARCH-TRADEOFFS
     - SOAS-REQ-QUALITY
 - - assure
-  - - SOAS-SEC-APPLICATION
-    - SOAS-SEC-INFRASTRUCTURE
+  - - dynamic:scope-resolution
     - SOAS-ENG-MAINTAINABILITY
-    - SOAS-DATA-INTEGRITY
-    - SOAS-PERF-CAPACITY
+    - SOAS-QUAL-TEST-STRATEGY
+    - SOAS-QUAL-TEST-EFFECTIVENESS
+    - SOAS-QUAL-CHANGE-VERIFICATION
     - SOAS-RES-FAILURE
 - - operate
   - - SOAS-OPS-OBSERVABILITY
@@ -29,3 +33,7 @@ stages:
   - - SOAS-GOV-RISK
     - SOAS-GOV-DECISIONS
     - SOAS-REL-OPINION
+rules:
+- evaluate every scope-selection rule and record selected and excluded decisions
+- resolve transitive dependencies before execution
+- do not treat insufficient evidence, blocked or not executed as positive assurance

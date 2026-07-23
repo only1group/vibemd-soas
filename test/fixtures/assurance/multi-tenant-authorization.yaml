@@ -1,0 +1,7 @@
+id: multi-tenant-authorization
+capability: SOAS-SEC-AUTHORIZATION
+observed_condition: An ordinary tenant account can access another tenant's object.
+expected_required_evidence: [policy code, tests]
+expected_outcome: finding-raised
+expected_finding: true
+expected_severity: high

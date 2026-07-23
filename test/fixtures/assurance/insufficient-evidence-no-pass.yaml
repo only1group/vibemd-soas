@@ -1,0 +1,6 @@
+id: insufficient-evidence-no-pass
+capability: SOAS-DATA-PRIVACY
+observed_condition: The system processes user records but has no verified data inventory or retention evidence.
+expected_required_evidence: [data inventory, jurisdictions]
+expected_outcome: insufficient-evidence
+expected_finding: false

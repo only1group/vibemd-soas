@@ -1,4 +1,4 @@
-# VibeMD SOAS 4.0
+# VibeMD SOAS 5.0
 
 **Software Engineering Operating and Assurance System**
 
@@ -14,11 +14,17 @@ SOAS supports:
 - complete SDLC journeys
 - modular run-on-demand capabilities
 - evidence-based assurance
+- deterministic, evidence-recorded capability selection
+- strict finding, execution and output contracts
+- explicit insufficient-evidence and independent-closure semantics
 - professional version-controlled outputs
 - controlled project learning
 - permission-based remediation and verification
 
 SOAS is not executable software. The AI development environment interprets the instruction files, inspects the project and creates the agreed outputs.
+
+The repository includes optional contributor validation tooling. It does not
+become a required runtime or service in consuming applications.
 
 Begin with `START-HERE.md`, then load `SOAS.md`.
 

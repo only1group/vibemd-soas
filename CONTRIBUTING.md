@@ -14,7 +14,10 @@ Thank you for contributing.
 ## Pull Request Checklist
 
 - Capability or journey follows the existing structure.
-- YAML and JSON validate.
+- `make validate` and `make test` pass from the source repository.
+- YAML, JSON and schema-covered examples validate.
+- Capability, journey, dependency, standards and output references resolve.
+- Selection-policy changes include exact golden fixture updates.
 - Documentation is updated where needed.
 - Existing behaviour is preserved unless intentionally changed.
 - Changes are described in the CHANGELOG.
@@ -23,7 +26,7 @@ Thank you for contributing.
 
 VibeMD SOAS follows Semantic Versioning:
 
-- MAJOR – breaking architectural changes
+- MAJOR – incompatible capability or output contracts
 - MINOR – new capabilities or significant features
 - PATCH – fixes, clarifications and documentation improvements
 

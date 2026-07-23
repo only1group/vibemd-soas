@@ -5,6 +5,7 @@ steps:
 - identify lifecycle stage
 - identify assurance target
 - select capabilities
+- record every selected and excluded capability with triggering evidence
 - resolve dependencies
 - estimate materiality
 - create execution plan
@@ -12,3 +13,4 @@ constraints:
 - do not execute unrelated capabilities
 - do not omit material cross-cutting risks
 - explain selected scope
+- treat unresolved material scope signals as uncertainty, not evidence for exclusion

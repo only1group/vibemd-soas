@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SOAS Selection Decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["capability_id", "decision", "triggering_evidence", "reason", "dependencies", "unresolved_uncertainty"],
+  "properties": {
+    "capability_id": {"type": "string"},
+    "decision": {"enum": ["selected", "excluded"]},
+    "triggering_evidence": {"type": "array", "items": {"type": "string"}},
+    "reason": {"type": "string"},
+    "dependencies": {"type": "array", "items": {"type": "string"}},
+    "unresolved_uncertainty": {"type": "array", "items": {"type": "string"}}
+  }
+}

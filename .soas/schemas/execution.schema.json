@@ -1,44 +1,120 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibemd.example/soas/schemas/execution.schema.json",
   "title": "SOAS Execution",
   "type": "object",
+  "additionalProperties": false,
   "required": [
-    "execution_id",
-    "soas_version",
-    "started_at",
-    "profile",
-    "intent",
-    "scope",
-    "capabilities",
-    "standards_resolution"
+    "execution_id", "soas_version", "state", "started_at", "profile", "intent",
+    "repository", "scope", "target", "tools", "capabilities", "dependency_resolution",
+    "standards_resolution", "assumptions", "limitations", "unanswered_questions",
+    "evidence_register", "implementer", "verifier"
   ],
   "properties": {
-    "execution_id": {
-      "type": "string"
-    },
-    "soas_version": {
-      "type": "string"
-    },
-    "started_at": {
-      "type": "string"
-    },
-    "profile": {
-      "type": "string"
-    },
-    "intent": {
-      "type": "string"
+    "execution_id": {"type": "string", "pattern": "^SOAS-[0-9]{8}-[0-9]{3,}$"},
+    "soas_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "state": {"enum": ["planned", "in-progress", "finalized", "aborted"]},
+    "outcome": {"enum": ["satisfied", "finding-raised", "insufficient-evidence", "not-executed", "blocked"]},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "profile": {"enum": ["guided-engineer", "lead-peer"]},
+    "intent": {"enum": ["journey", "capability", "change", "release", "closure"]},
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["location", "commit_sha", "branch", "dirty"],
+      "properties": {
+        "location": {"type": "string"},
+        "commit_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "branch": {"type": "string"},
+        "dirty": {"type": "boolean"}
+      }
     },
     "scope": {
-      "type": "object"
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["included_paths", "excluded_paths"],
+      "properties": {
+        "included_paths": {"type": "array", "items": {"type": "string"}},
+        "excluded_paths": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["environment"],
+      "properties": {
+        "environment": {"type": "string"},
+        "deployment_id": {"type": "string"}
+      }
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["name", "version"],
+        "properties": {"name": {"type": "string"}, "version": {"type": "string"}}
+      }
     },
     "capabilities": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "version", "selection", "reason", "triggering_evidence", "outcome", "outputs"],
+        "properties": {
+          "id": {"type": "string"},
+          "version": {"type": "string"},
+          "selection": {"enum": ["selected", "excluded"]},
+          "reason": {"type": "string"},
+          "triggering_evidence": {"type": "array", "items": {"type": "string"}},
+          "outcome": {"enum": ["satisfied", "finding-raised", "insufficient-evidence", "not-executed", "not-applicable", "blocked"]},
+          "outputs": {"type": "array", "items": {"type": "string"}},
+          "absence_reason": {"type": "string"},
+          "limitations": {"type": "array", "items": {"type": "string"}}
+        }
+      }
     },
-    "standards_resolution": {
-      "type": "array"
+    "dependency_resolution": {"type": "array", "items": {"type": "object"}},
+    "standards_resolution": {"type": "array", "items": {"type": "object"}},
+    "assumptions": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "unanswered_questions": {"type": "array", "items": {"type": "string"}},
+    "evidence_register": {
+      "type": "object", "additionalProperties": false, "required": ["location"],
+      "properties": {"location": {"type": "string"}, "integrity_hash": {"type": "string"}}
     },
-    "limitations": {
-      "type": "array"
+    "outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "inventory_location": {"type": "string"},
+        "execution_manifest": {"type": "string"},
+        "evidence_register": {"type": "string"},
+        "findings_register": {"type": "string"},
+        "risk_register": {"type": "string"},
+        "summary_report": {"type": "string"},
+        "capability_reports": {"type": "array", "items": {"type": "string"}},
+        "additional_outputs": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "implementer": {"type": "object"},
+    "verifier": {"type": "object"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"state": {"const": "finalized"}}, "required": ["state"]},
+      "then": {
+        "required": ["completed_at", "outcome", "outputs"],
+        "properties": {
+          "outputs": {
+            "required": [
+              "inventory_location", "execution_manifest", "evidence_register",
+              "findings_register", "risk_register", "summary_report",
+              "capability_reports"
+            ]
+          }
+        }
+      }
     }
-  }
+  ]
 }

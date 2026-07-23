@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SOAS Output Inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["execution_id", "outputs"],
+  "properties": {
+    "execution_id": {"type": "string"},
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "location", "identifiers", "integrity"],
+        "properties": {
+          "type": {"enum": ["execution-manifest", "capability-report", "summary-report", "findings-register", "risk-register", "evidence-register", "adr", "remediation-prompt", "closure-evidence", "other"]},
+          "location": {"type": "string"},
+          "identifiers": {"type": "array", "items": {"type": "string"}},
+          "integrity": {"type": "object"}
+        }
+      }
+    }
+  }
+}

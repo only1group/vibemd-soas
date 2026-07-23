@@ -1,0 +1,23 @@
+version: 1.0.0
+authority: orchestrator/selection-rules.yaml
+steps:
+- collect observable repository, architecture, deployment and declared-scope signals
+- retain the journey baseline capabilities
+- evaluate every selection rule deterministically
+- add transitive dependencies
+- record selected and excluded decisions
+- record triggering evidence, reason and unresolved uncertainty
+- ask only for material signals that evidence cannot resolve
+- rerun resolution when scope evidence changes
+decision_fields:
+- capability_id
+- decision
+- triggering_evidence
+- reason
+- dependencies
+- unresolved_uncertainty
+rules:
+- select the minimum complete set
+- do not omit a material domain because a journey baseline did not name it
+- exclusion requires affirmative scope evidence or an explicit unresolved uncertainty
+- uncertainty about a potentially material exposed domain does not support exclusion

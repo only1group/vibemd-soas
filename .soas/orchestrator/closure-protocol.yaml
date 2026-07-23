@@ -1,9 +1,28 @@
+version: 2.0.0
+roles:
+  implementer: person or agent that made or directed the remediation
+  verifier: person or agent that executes and assesses the verification procedure
+independence:
+  critical: verifier must be a different accountable human or independently governed team
+  high: verifier must be a different human or independently governed agent context with human accountability
+  medium: separate reviewer or separate agent context is preferred
+  low: self-verification is permitted when disclosed
+  informational: verification is proportionate to the claim
+ai_agents:
+- agents sharing the same session, context, memory or implementer instructions are not independent
+- a separate agent context may be labelled separate-context but not independent unless governance and accountability are also separate
+- when independent verification is unavailable, label the result self-verified and disclose the limitation
 closure_requires:
-- original finding
+- original finding and affected subject version
+- implementer identity or role
 - remediation evidence
-- verification procedure executed
-- result recorded
-- residual risk assessed
+- original verification procedure executed against the remediated subject
+- regression evidence
+- verifier identity or role and independence classification
+- result and verification time
+- residual risk
+- exception expiry where risk is accepted
+- reopening conditions
 statuses:
 - open
 - planned
@@ -12,4 +31,8 @@ statuses:
 - closed
 - accepted-risk
 - reopened
-rule: the implementer must not assert closure without verification evidence
+rules:
+- the implementer must not assert independent closure
+- closed requires a passed verification result and closure evidence
+- accepted risk requires an accountable approver, rationale and expiry
+- reopen when verification regresses, subject scope materially changes, evidence is invalidated or an exception expires

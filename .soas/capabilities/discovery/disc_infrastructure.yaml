@@ -1,6 +1,7 @@
+---
 id: SOAS-DISC-INFRASTRUCTURE
 name: Infrastructure Discovery
-version: 1.0.0
+version: 2.0.0
 category: discovery
 purpose: Identify hosting, networks, identities, data services, secrets and deployment
   topology.
@@ -12,6 +13,10 @@ scopes:
 - component
 - environment
 - change-set
+scope_signals:
+- repository
+- material-change
+- production-service
 inputs:
   required:
   - IaC
@@ -20,52 +25,92 @@ inputs:
   - user context
   - organisation standards
   - jurisdiction overlay
-frameworks:
-  normative:
-  - NIST-CSF
-  - CIS-CONTROLS
-  conditional:
-  - JUR-AU
-  - JUR-US
-  - JUR-EU
-  rule: activate jurisdiction overlays only where relevant; no industry frameworks
-activities:
-- inspect available evidence before asking questions
-- assess infrastructure discovery against project requirements and selected authoritative
-  criteria
-- identify material strengths, gaps, assumptions and limitations
-- create evidence-linked findings with remediation and verification procedures
-- adapt explanation to the selected profile without changing assurance depth
-questions:
-- ask_when: material evidence gap remains
-  instruction: Ask the minimum question needed to remove the uncertainty and explain
-    why it matters.
+control_objectives:
+- id: OBJ-01
+  objective: Identify hosting, networks, identities, data services, secrets and deployment
+    topology; establish the exact subject, version and boundary assessed.
+- id: OBJ-02
+  objective: Demonstrate infrastructure discovery behavior using IaC, cloud configuration
+    and evidence fitted to the claim.
+- id: OBJ-03
+  objective: Identify unsafe assumptions and show how infrastructure discovery failures
+    are detected, contained and recovered.
 evidence:
-  minimum:
-  - source reference
-  - observation
-  - reliability
-  - timestamp or commit
-  - limitations
+  required:
+  - IaC
+  - cloud configuration
+  - repository tree and immutable revision
+  - configuration, deployment and dependency inventories
+  - immutable subject version or commit
+  optional:
+  - user context
+  - organisation standards
+  - jurisdiction overlay
+  sufficiency:
+  - Each applicable control objective has current, scope-matched evidence.
+  - At least one positive and one negative procedure is executed or an explicit authorized
+    absence reason is recorded.
+  - Conflicting or weak evidence is resolved or retained as a limitation; missing
+    evidence cannot produce satisfied.
   prohibit:
   - secret values
-  - unsupported compliance claims
+  - unnecessary personal data
+  - unsupported legal or standards compliance claims
+inspection_procedures:
+- Reconstruct the assessed system from source, configuration, manifests and deployed
+  evidence before relying on documentation.
+- Query repository and runtime evidence for IaC, cloud configuration; record source,
+  location, time and subject version.
+- Compare observed behavior with NIST-CSF, CIS-CONTROLS without treating automated
+  checks as compliance.
+test_recipes:
+  positive:
+  - Trace representative entry points to deployed components and owned data.
+  - 'Confirm required outputs include evidence and objective references: infrastructure
+    inventory, trust-boundary map, execution manifest update, evidence register update.'
+  negative:
+  - Search for unrecorded services, generated assets, alternate deployment paths and
+    stale documentation.
+failure_modes:
+- The assessed repository is not the deployed revision
+- Material components or environments remain outside the reconstructed scope
+- Infrastructure Discovery is assessed against documentation that does not match the
+  implemented subject version.
 outputs:
   required:
   - infrastructure inventory
   - trust-boundary map
   - execution manifest update
   - evidence register update
+  required_content:
+  - assessed scope and immutable subject version
+  - objective-level evidence references and outcome
+  - findings, limitations, residual uncertainty and required next action
   finding_format: schemas/finding.schema.json
 exit_criteria:
-- scope assessed
-- material evidence gaps recorded
-- findings are evidence-linked
-- standards versions recorded
-- next action recommended
-severity_model:
-  critical: credible severe impact or release blocker
-  high: material risk requiring prompt action
-  medium: important weakness with bounded impact
-  low: improvement or limited risk
-  informational: context or positive observation
+- Every applicable objective has an outcome and evidence references.
+- Required outputs exist or have an explicit absence reason.
+- Negative and positive procedures are recorded with results or authorization limitations.
+- No insufficient-evidence, not-executed or blocked objective is represented as satisfied.
+frameworks:
+  normative:
+  - NIST-CSF
+  - CIS-CONTROLS
+  advisory: []
+  conditional:
+  - JUR-AU
+  - JUR-US
+  - JUR-EU
+  rule: activate jurisdiction overlays only where relevant; no industry frameworks
+dependencies: []
+questions:
+- ask_when: repository and runtime evidence cannot establish a material infrastructure
+    discovery boundary or expected behavior
+  instruction: Ask for the smallest missing fact needed to decide an objective; record
+    the answer as reported evidence or an assumption.
+severity_considerations:
+- Calibrate impact, exposure, affected users or tenants, detectability, reversibility
+  and release-gating effect.
+- For infrastructure discovery, increase concern when failure crosses a trust, tenant,
+  data, safety or recovery boundary.
+- Record confidence and priority separately from severity.

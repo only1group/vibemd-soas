@@ -1,6 +1,7 @@
+---
 id: SOAS-AUTO-QUALITY-GATES
 name: Automated Quality Gates
-version: 1.0.0
+version: 2.0.0
 category: automation
 purpose: Design proportional automated gates for security, tests, dependencies and
   release evidence.
@@ -12,6 +13,10 @@ scopes:
 - component
 - environment
 - change-set
+scope_signals:
+- ci-cd
+- environment-promotion
+- infrastructure-as-code
 inputs:
   required:
   - pipelines
@@ -20,51 +25,90 @@ inputs:
   - user context
   - organisation standards
   - jurisdiction overlay
-frameworks:
-  normative:
-  - NIST-SSDF
-  conditional:
-  - JUR-AU
-  - JUR-US
-  - JUR-EU
-  rule: activate jurisdiction overlays only where relevant; no industry frameworks
-activities:
-- inspect available evidence before asking questions
-- assess automated quality gates against project requirements and selected authoritative
-  criteria
-- identify material strengths, gaps, assumptions and limitations
-- create evidence-linked findings with remediation and verification procedures
-- adapt explanation to the selected profile without changing assurance depth
-questions:
-- ask_when: material evidence gap remains
-  instruction: Ask the minimum question needed to remove the uncertainty and explain
-    why it matters.
+control_objectives:
+- id: OBJ-01
+  objective: Design proportional automated gates for security, tests, dependencies
+    and release evidence; establish the exact subject, version and boundary assessed.
+- id: OBJ-02
+  objective: Demonstrate automated quality gates behavior using pipelines, risk target
+    and evidence fitted to the claim.
+- id: OBJ-03
+  objective: Identify unsafe assumptions and show how automated quality gates failures
+    are detected, contained and recovered.
 evidence:
-  minimum:
-  - source reference
-  - observation
-  - reliability
-  - timestamp or commit
-  - limitations
+  required:
+  - pipelines
+  - risk target
+  - versioned pipeline and environment definitions
+  - recent promotion, gate and rollback results
+  - immutable subject version or commit
+  optional:
+  - user context
+  - organisation standards
+  - jurisdiction overlay
+  sufficiency:
+  - Each applicable control objective has current, scope-matched evidence.
+  - At least one positive and one negative procedure is executed or an explicit authorized
+    absence reason is recorded.
+  - Conflicting or weak evidence is resolved or retained as a limitation; missing
+    evidence cannot produce satisfied.
   prohibit:
   - secret values
-  - unsupported compliance claims
+  - unnecessary personal data
+  - unsupported legal or standards compliance claims
+inspection_procedures:
+- Trace source revision through build, test, approval, artifact and environment promotion
+  controls.
+- Query repository and runtime evidence for pipelines, risk target; record source,
+  location, time and subject version.
+- Compare observed behavior with NIST-SSDF without treating automated checks as compliance.
+test_recipes:
+  positive:
+  - Reproduce a successful build and promotion from the locked source revision.
+  - 'Confirm required outputs include evidence and objective references: quality gate
+    design, implementation prompts, execution manifest update, evidence register update.'
+  negative:
+  - Attempt promotion with a failed gate, untrusted artifact or unauthorized actor.
+failure_modes:
+- A required gate is advisory or bypassable
+- The deployed artifact cannot be tied to the assessed source revision
+- Automated Quality Gates is assessed against documentation that does not match the
+  implemented subject version.
 outputs:
   required:
   - quality gate design
   - implementation prompts
   - execution manifest update
   - evidence register update
+  required_content:
+  - assessed scope and immutable subject version
+  - objective-level evidence references and outcome
+  - findings, limitations, residual uncertainty and required next action
   finding_format: schemas/finding.schema.json
 exit_criteria:
-- scope assessed
-- material evidence gaps recorded
-- findings are evidence-linked
-- standards versions recorded
-- next action recommended
-severity_model:
-  critical: credible severe impact or release blocker
-  high: material risk requiring prompt action
-  medium: important weakness with bounded impact
-  low: improvement or limited risk
-  informational: context or positive observation
+- Every applicable objective has an outcome and evidence references.
+- Required outputs exist or have an explicit absence reason.
+- Negative and positive procedures are recorded with results or authorization limitations.
+- No insufficient-evidence, not-executed or blocked objective is represented as satisfied.
+frameworks:
+  normative:
+  - NIST-SSDF
+  advisory: []
+  conditional:
+  - JUR-AU
+  - JUR-US
+  - JUR-EU
+  rule: activate jurisdiction overlays only where relevant; no industry frameworks
+dependencies:
+- SOAS-AUTO-CICD
+questions:
+- ask_when: repository and runtime evidence cannot establish a material automated
+    quality gates boundary or expected behavior
+  instruction: Ask for the smallest missing fact needed to decide an objective; record
+    the answer as reported evidence or an assumption.
+severity_considerations:
+- Calibrate impact, exposure, affected users or tenants, detectability, reversibility
+  and release-gating effect.
+- For automated quality gates, increase concern when failure crosses a trust, tenant,
+  data, safety or recovery boundary.
+- Record confidence and priority separately from severity.

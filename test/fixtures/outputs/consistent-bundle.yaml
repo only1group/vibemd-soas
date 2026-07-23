@@ -1,0 +1,18 @@
+evidence_ids: [E-1004, E-1004-regression]
+findings:
+- id: SOAS-F-1004
+  status: closed
+  evidence_references: [E-1004]
+  closure_evidence: [E-1004]
+  regression_evidence: [E-1004-regression]
+capabilities:
+- id: SOAS-SEC-SECRETS
+  required_outputs: [secrets report, rotation plan, execution manifest update, evidence register update]
+  produced_outputs: [secrets report, rotation plan, execution manifest update, evidence register update]
+output_inventory:
+- execution-manifest
+- evidence-register
+- findings-register
+- risk-register
+- summary-report
+- capability-report

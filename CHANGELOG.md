@@ -6,6 +6,38 @@ The format is inspired by *Keep a Changelog* and the project follows Semantic Ve
 
 ---
 
+## [5.0.0] - 2026-07-23
+
+### Added
+
+- Dependency-free repository validation and regression tests.
+- Executable strict capability, finding, execution, outcome, selection and
+  output-inventory contracts.
+- Evidence-fitness, calibrated severity, capability-outcome, active-testing,
+  output and independent-closure protocols.
+- Deterministic signal-based selection with dependency closure and golden
+  architecture fixtures.
+- Domain-specific objectives, evidence, inspection procedures, positive and
+  negative tests, failure modes and sufficiency rules across all 72 capabilities.
+- Four finding lifecycle examples and nine assurance scenario fixtures.
+- ADRs, migration guidance, baseline validation report and full concern
+  traceability.
+
+### Changed
+
+- Capability definitions use contract version 2.0.0.
+- Finding and execution contracts now reject unknown fields and enforce
+  lifecycle-specific evidence.
+- Standards entries record official sources and resolution limitations; added
+  ISO 31000, ISO 22301 and ISO 9241.
+- Structured register headers now carry evidence fitness, scope, confidence,
+  priority and expiry data.
+
+### Compatibility
+
+- This is a major release. New executions and findings must use the 5.0
+  contracts. Historical generated outputs should remain unchanged.
+
 ## [4.0.0] - 2026-07-18
 
 ### Added

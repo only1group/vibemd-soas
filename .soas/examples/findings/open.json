@@ -1,0 +1,51 @@
+{
+  "id": "SOAS-F-1001",
+  "title": "Privileged endpoint lacks authentication",
+  "description": "A privileged operation is reachable without an authenticated identity.",
+  "severity": "critical",
+  "confidence": "confirmed",
+  "priority": "immediate",
+  "status": "open",
+  "affected_scope": {
+    "components": ["admin-api"],
+    "environments": ["production"],
+    "populations": ["all tenants"],
+    "tenancies": ["all"]
+  },
+  "evidence": [{
+    "id": "E-1001",
+    "type": "test-result",
+    "source": "authorized integration test",
+    "location": "tests/security/admin_api",
+    "observation": "An unauthenticated request returned success.",
+    "observed_at": "2026-07-23T00:00:00Z",
+    "subject_version": "0123456789abcdef0123456789abcdef01234567",
+    "reproducibility": "reproduced",
+    "limitations": []
+  }],
+  "risk": {
+    "scenario": "An unauthenticated actor performs tenant-wide administration.",
+    "likelihood": "likely",
+    "exposure": "public"
+  },
+  "impact": {
+    "observed": null,
+    "potential": "Cross-tenant disclosure and destructive administration.",
+    "reversibility": "difficult"
+  },
+  "authoritative_basis": [{
+    "standard_id": "OWASP-ASVS",
+    "version": "5.0.0",
+    "reference": "access control verification requirements",
+    "relationship": "normative"
+  }],
+  "remediation": {
+    "recommendation": "Require authenticated, explicitly authorized administrative identities.",
+    "acceptance_criteria": ["Unauthenticated and unauthorized requests are denied."]
+  },
+  "verification": {
+    "procedure": "Repeat positive and negative authorization tests.",
+    "required_evidence": ["versioned test result"]
+  },
+  "owner": {"state": "unassigned"}
+}

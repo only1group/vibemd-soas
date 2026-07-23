@@ -1,0 +1,7 @@
+id: ai-specific-selection
+capability: SOAS-AI-SECURITY
+observed_condition: An agent can call side-effecting tools using retrieved untrusted content.
+expected_required_evidence: [prompts, tool definitions, source]
+expected_outcome: finding-raised
+expected_finding: true
+expected_severity: high

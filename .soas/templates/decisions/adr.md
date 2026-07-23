@@ -3,6 +3,8 @@
 - Status:
 - Date:
 - Decision owners:
+- Implementer:
+- Independent reviewer:
 - Review trigger:
 
 ## Context

@@ -6,5 +6,8 @@ steps:
 - resolve final version and errata
 - treat drafts as advisory
 - record versions and access limitations
+- record official source, resolution date, publication status and whether online resolution succeeded
+- record a snapshot identifier or integrity hash where licensing permits
 official_sources_only: true
 offline_behaviour: use pinned versions and create a standards-freshness limitation
+applicability: jurisdiction selection depends on establishment, processing, data subjects, markets and contracts; geography alone is insufficient

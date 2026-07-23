@@ -1,0 +1,77 @@
+version: 1.0.0
+journey: JRN-LEAD-PEER
+baseline_capabilities:
+- SOAS-DISC-REPOSITORY
+- SOAS-DISC-ARCHITECTURE
+- SOAS-DISC-INFRASTRUCTURE
+- SOAS-ARCH-SOLUTION
+- SOAS-ARCH-TRADEOFFS
+- SOAS-REQ-QUALITY
+- SOAS-ENG-MAINTAINABILITY
+- SOAS-QUAL-TEST-STRATEGY
+- SOAS-QUAL-TEST-EFFECTIVENESS
+- SOAS-QUAL-CHANGE-VERIFICATION
+- SOAS-RES-FAILURE
+- SOAS-OPS-OBSERVABILITY
+- SOAS-OPS-RECOVERY
+- SOAS-REL-PRODUCTION
+- SOAS-GOV-RISK
+- SOAS-GOV-DECISIONS
+- SOAS-REL-OPINION
+rules:
+- id: exposed-api
+  signals_any: [public-api, partner-api]
+  capabilities: [SOAS-SEC-THREAT-MODEL, SOAS-SEC-APPLICATION, SOAS-SEC-API, SOAS-ARCH-INTEGRATION]
+  reason: Exposed APIs require contract, abuse-case and application security assurance.
+- id: identity-boundary
+  signals_any: [identity-provider, user-accounts, privileged-users]
+  capabilities: [SOAS-SEC-IDENTITY, SOAS-SEC-AUTHORIZATION, SOAS-SEC-SECRETS]
+  reason: Identity and privileged access create authentication, lifecycle and authorization boundaries.
+- id: sensitive-data
+  signals_any: [personal-data, regulated-data, payment-processing]
+  capabilities: [SOAS-ARCH-DATA, SOAS-DATA-PRIVACY, SOAS-DATA-INTEGRITY, SOAS-SEC-SECRETS]
+  reason: Sensitive data requires lifecycle, integrity and key-management assurance.
+- id: artificial-intelligence
+  signals_any: [ai-model, ai-agent, retrieval-augmented-generation]
+  capabilities: [SOAS-AI-ARCHITECTURE, SOAS-AI-GOVERNANCE, SOAS-AI-QUALITY, SOAS-AI-SECURITY, SOAS-SEC-THREAT-MODEL]
+  reason: AI behavior requires AI-specific architecture, governance, evaluation and security assurance.
+- id: client-software
+  signals_any: [mobile-client, desktop-client, local-encrypted-storage]
+  capabilities: [SOAS-SEC-MOBILE, SOAS-SEC-SECRETS, SOAS-UX-RESPONSIVE, SOAS-ACC-WCAG]
+  reason: Installed clients create local storage, platform, device and accessibility risks.
+- id: cloud-platform
+  signals_any: [cloud-infrastructure, infrastructure-as-code, containers]
+  capabilities: [SOAS-INF-CLOUD, SOAS-INF-IAC, SOAS-INF-NETWORK, SOAS-INF-CONTAINERS, SOAS-SEC-INFRASTRUCTURE]
+  reason: Provisioned platforms require cloud, network, container and IaC assurance.
+- id: asynchronous-or-realtime
+  signals_any: [queues, asynchronous-workers, real-time-collaboration]
+  capabilities: [SOAS-ARCH-INTEGRATION, SOAS-PERF-BACKEND, SOAS-RES-FAILURE, SOAS-OPS-OBSERVABILITY]
+  reason: Asynchronous and real-time processing require delivery, ordering, load and failure assurance.
+- id: external-dependencies
+  signals_any: [third-party-integrations, external-webhooks]
+  capabilities: [SOAS-ARCH-INTEGRATION, SOAS-SEC-SUPPLY-CHAIN, SOAS-OPS-INCIDENT]
+  reason: External dependencies create contract, supply-chain and incident-response risks.
+- id: data-change
+  signals_any: [data-migration, data-conversion, schema-transition]
+  capabilities: [SOAS-DATA-MIGRATION, SOAS-DATA-INTEGRITY, SOAS-RES-RECOVERY, SOAS-REL-ROLLBACK]
+  reason: Data change requires reconciliation, rollback and recovery evidence.
+- id: tenant-boundary
+  signals_any: [multi-tenant]
+  capabilities: [SOAS-SEC-THREAT-MODEL, SOAS-SEC-AUTHORIZATION, SOAS-DATA-INTEGRITY]
+  reason: Multi-tenancy creates high-consequence isolation boundaries.
+- id: delivery-pipeline
+  signals_any: [ci-cd, environment-promotion]
+  capabilities: [SOAS-AUTO-CICD, SOAS-AUTO-QUALITY-GATES, SOAS-AUTO-ENVIRONMENTS, SOAS-SEC-SUPPLY-CHAIN, SOAS-REL-ROLLBACK]
+  reason: Automated delivery requires provenance, gating, promotion and rollback assurance.
+- id: interactive-interface
+  signals_any: [web-ui, mobile-client, desktop-client]
+  capabilities: [SOAS-UX-EXPERIENCE, SOAS-UX-CONTENT, SOAS-ACC-WCAG, SOAS-PERF-FRONTEND]
+  reason: Interactive products require usability, accessibility and frontend performance assurance.
+- id: material-scale
+  signals_any: [material-load, high-growth, availability-slo]
+  capabilities: [SOAS-PERF-CAPACITY, SOAS-PERF-BACKEND, SOAS-DATA-PERFORMANCE, SOAS-RES-RECOVERY]
+  reason: Material scale or availability claims require capacity, bottleneck and recovery evidence.
+- id: production-operation
+  signals_any: [production-service]
+  capabilities: [SOAS-OPS-INCIDENT, SOAS-OPS-COST, SOAS-RES-RECOVERY]
+  reason: Production operation requires incident, cost and recovery governance.

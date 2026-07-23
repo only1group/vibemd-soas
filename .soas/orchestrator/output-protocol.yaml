@@ -1,0 +1,20 @@
+version: 1.0.0
+required_execution_outputs:
+- execution-manifest
+- evidence-register
+- findings-register
+- risk-register
+- summary-report
+conditional_outputs:
+  capability-report: one for every executed capability
+  adr: for significant architectural decisions
+  remediation-prompt: for findings selected for implementation
+  closure-evidence: for closed findings
+consistency:
+- every identifier is unique within its register
+- every finding and risk evidence reference resolves
+- every capability outcome links its required outputs or an absence reason
+- every finalized execution lists all generated outputs
+- every closed finding links closure and regression evidence
+- register status values match their schemas and protocols
+inventory_schema: schemas/output-inventory.schema.json
