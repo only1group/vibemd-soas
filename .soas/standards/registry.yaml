@@ -1,6 +1,6 @@
 ---
-registry_version: 2.0.0
-last_verified: '2026-07-18'
+registry_version: 2.0.1
+last_verified: '2026-07-24'
 selection_policy: latest official final; drafts advisory only
 standards:
 - id: ISO-25010
@@ -334,37 +334,93 @@ standards:
   name: Risk management — Guidelines
   authority: ISO
   pinned_version: '2018'
-  status: published
+  status: published; confirmed 2023; revision planned
+  known_advisory: A revision is planned but no replacement final has been published.
   use: risk management
   official_source: https://www.iso.org/standard/65694.html
   resolution:
-    resolved_on: '2026-07-23'
+    resolved_on: '2026-07-24'
     online_resolution: true
-    limitation: ISO indicates that the published 2018 edition is to be revised; re-resolve before use.
+    limitation: ISO indicates that the published 2018 edition is to be revised;
+      re-resolve before use.
     snapshot: official-page-metadata-only
 - id: ISO-22301
   name: Security and resilience — Business continuity management systems — Requirements
   authority: ISO
-  pinned_version: '2019'
-  status: published
+  pinned_version: 2019+Amd 1:2024
+  status: published; revision in development
+  known_advisory: ISO/CD 22301 edition 3 is under development and is not a final
+    replacement.
   use: continuity and resilience
   official_source: https://www.iso.org/standard/75106.html
   resolution:
-    resolved_on: '2026-07-23'
+    resolved_on: '2026-07-24'
     online_resolution: true
-    limitation: Amendment 1:2024 exists and ISO indicates the 2019 edition is to be revised; resolve applicability before use.
+    limitation: ISO indicates that the amended 2019 edition is to be revised;
+      re-resolve before use.
     snapshot: official-page-metadata-only
-- id: ISO-9241
-  name: 'Ergonomics of human-system interaction — Part 210: Human-centred design'
+- id: ISO-9241-11
+  name: 'Ergonomics of human-system interaction — Part 11: Usability: Definitions
+    and concepts'
+  authority: ISO
+  pinned_version: '2018'
+  status: published; confirmed 2023
+  use: usability definitions and evaluation framing
+  official_source: https://www.iso.org/standard/63500.html
+  resolution:
+    resolved_on: '2026-07-24'
+    online_resolution: true
+    limitation: Official page metadata only; no restricted normative text retained.
+    snapshot: official-page-metadata-only
+- id: ISO-9241-110
+  name: 'Ergonomics of human-system interaction — Part 110: Interaction principles'
+  authority: ISO
+  pinned_version: '2020'
+  status: published; confirmed
+  use: interaction principles
+  official_source: https://www.iso.org/standard/75258.html
+  resolution:
+    resolved_on: '2026-07-24'
+    online_resolution: true
+    limitation: Official page metadata only; no restricted normative text retained.
+    snapshot: official-page-metadata-only
+- id: ISO-9241-112
+  name: 'Ergonomics of human-system interaction — Part 112: Principles for the
+    presentation of information'
+  authority: ISO
+  pinned_version: '2025'
+  status: published
+  use: presentation and comprehension of interface information
+  official_source: https://www.iso.org/standard/87518.html
+  resolution:
+    resolved_on: '2026-07-24'
+    online_resolution: true
+    limitation: Official page metadata only; no restricted normative text retained.
+    snapshot: official-page-metadata-only
+- id: ISO-9241-171
+  name: 'Ergonomics of human-system interaction — Part 171: Software accessibility'
+  authority: ISO
+  pinned_version: '2025'
+  status: published
+  use: software accessibility
+  official_source: https://www.iso.org/standard/86308.html
+  resolution:
+    resolved_on: '2026-07-24'
+    online_resolution: true
+    limitation: Official page metadata only; no restricted normative text retained.
+    snapshot: official-page-metadata-only
+- id: ISO-9241-210
+  name: 'Ergonomics of human-system interaction — Part 210: Human-centred design
+    for interactive systems'
   authority: ISO
   pinned_version: '2019'
-  status: published
+  status: published; confirmed 2025
   use: human-centred design
   official_source: https://www.iso.org/standard/77520.html
   resolution:
-    resolved_on: '2026-07-23'
+    resolved_on: '2026-07-24'
     online_resolution: true
-    limitation: Mapping is specifically to ISO 9241-210:2019, not the entire ISO 9241 series.
+    limitation: Official page metadata only; no restricted normative text retained.
     snapshot: official-page-metadata-only
 resolution_policy:
   required_fields:

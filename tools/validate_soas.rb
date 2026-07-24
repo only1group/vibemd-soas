@@ -96,6 +96,66 @@ module SOASValidation
     raise "#{path.relative_path_from(ROOT)}: invalid YAML: #{e.message}"
   end
 
+  def framework_references(value, location = "$", references = [])
+    case value
+    when Hash
+      value.each do |key, child|
+        child_location = "#{location}.#{key}"
+        if %w[normative advisory conditional].include?(key)
+          Array(child).each_with_index do |identifier, index|
+            references << [identifier, "#{child_location}[#{index}]"] if identifier.is_a?(String)
+          end
+        else
+          framework_references(child, child_location, references)
+        end
+      end
+    when Array
+      value.each_with_index { |child, index| framework_references(child, "#{location}[#{index}]", references) }
+    end
+    references
+  end
+
+  def standards_integrity_errors(registry, documents:, overlay_ids:)
+    errors = []
+    standards = Array(registry["standards"])
+    standard_ids = standards.map { |standard| standard["id"] }
+    errors << "standards registry: duplicate ids" unless standard_ids.uniq.length == standard_ids.length
+    registered = standard_ids.to_set
+
+    standards.each do |standard|
+      %w[id name authority pinned_version status official_source resolution].each do |field|
+        errors << "standards registry #{standard['id']}: missing #{field}" unless standard.key?(field)
+      end
+      %w[resolved_on online_resolution snapshot].each do |field|
+        errors << "standards registry #{standard['id']}: resolution missing #{field}" unless standard.fetch("resolution", {}).key?(field)
+      end
+    end
+
+    documents.each do |source, document|
+      framework_references(document).each do |identifier, location|
+        next if registered.include?(identifier) || overlay_ids.include?(identifier)
+        errors << "#{source}: unresolved standard #{identifier} at #{location}"
+      end
+    end
+    errors
+  end
+
+  def resolve_standard_offline(registry, identifier)
+    matches = Array(registry["standards"]).select { |standard| standard["id"] == identifier }
+    raise "duplicate standard #{identifier}" if matches.length > 1
+    raise "unknown standard #{identifier}" if matches.empty?
+
+    standard = matches.first
+    {
+      "id" => standard["id"],
+      "pinned_version" => standard["pinned_version"],
+      "status" => standard["status"],
+      "official_source" => standard["official_source"],
+      "resolution_mode" => "offline",
+      "limitation" => registry.dig("resolution_policy", "offline_behavior")
+    }
+  end
+
   def resolve_signals(rules, fixture)
     signals = Array(fixture["signals"]).to_set
     selected = Array(rules["baseline_capabilities"]).to_set
@@ -233,21 +293,13 @@ module SOASValidation
 
     registry = load_yaml(PACKAGE.join("standards/registry.yaml"))
     standard_ids = Array(registry["standards"]).map { |s| s["id"] }
-    errors << "standards registry: duplicate ids" unless standard_ids.uniq.length == standard_ids.length
     registered = standard_ids.to_set
     overlay_ids = Dir[PACKAGE.join("standards/overlays/**/*.yaml")].map { |p| load_yaml(Pathname.new(p))["id"] }.to_set
-    capabilities.each do |id, cap|
-      mappings = cap.fetch("frameworks", {}).values_at("normative", "advisory", "conditional").compact.flatten
-      mappings.each { |mapping| errors << "#{id}: unresolved standard #{mapping}" unless registered.include?(mapping) || overlay_ids.include?(mapping) }
+    standards_documents = yaml_files.reject { |path| path == PACKAGE.join("standards/registry.yaml") }.map do |path|
+      [path.relative_path_from(ROOT).to_s, load_yaml(path)]
     end
-    Array(registry["standards"]).each do |standard|
-      %w[id name authority pinned_version status official_source resolution].each do |field|
-        errors << "standards registry #{standard['id']}: missing #{field}" unless standard.key?(field)
-      end
-      %w[resolved_on online_resolution snapshot].each do |field|
-        errors << "standards registry #{standard['id']}: resolution missing #{field}" unless standard.fetch("resolution", {}).key?(field)
-      end
-    end
+    errors.concat(standards_integrity_errors(registry, documents: standards_documents, overlay_ids: overlay_ids))
+    facts[:standard_references] = standards_documents.sum { |_source, document| framework_references(document).length }
 
     rules = load_yaml(PACKAGE.join("orchestrator/selection-rules.yaml"))
     Array(rules["baseline_capabilities"]).each { |id| errors << "selection baseline: missing #{id}" unless capabilities.key?(id) }

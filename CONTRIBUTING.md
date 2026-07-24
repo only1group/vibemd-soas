@@ -22,6 +22,18 @@ Thank you for contributing.
 - Existing behaviour is preserved unless intentionally changed.
 - Changes are described in the CHANGELOG.
 
+## Standards Registry Integrity
+
+- Use a stable part-specific identifier where a standards family contains
+  independently versioned parts.
+- Record the current official final version, status, official source and
+  resolution metadata. Keep drafts and planned revisions advisory.
+- Do not reproduce restricted normative text.
+- Run the production validator after changing any normative, advisory or
+  conditional framework reference. Unknown or duplicate IDs must fail.
+- Verify offline resolution uses the pinned final and records the freshness
+  limitation; online checks must not silently replace a final with a draft.
+
 ## Versioning
 
 VibeMD SOAS follows Semantic Versioning:

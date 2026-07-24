@@ -43,4 +43,65 @@ class SOASValidationTest < Minitest::Test
     execution["outputs"] = {"summary_report" => "summary.md"}
     refute_empty SOASValidation.schema_errors(execution, schema)
   end
+
+  def test_unknown_standard_reference_fails_with_source_and_location
+    registry = SOASValidation.load_yaml(SOASValidation::PACKAGE.join("standards/registry.yaml"))
+    documents = [["fixture.yaml", {"frameworks" => {"normative" => ["UNKNOWN-STANDARD"]}}]]
+    errors = SOASValidation.standards_integrity_errors(registry, documents: documents, overlay_ids: Set.new)
+    assert_includes errors, "fixture.yaml: unresolved standard UNKNOWN-STANDARD at $.frameworks.normative[0]"
+  end
+
+  def test_duplicate_standard_id_fails
+    registry = SOASValidation.load_yaml(SOASValidation::PACKAGE.join("standards/registry.yaml"))
+    registry["standards"] << registry["standards"].first.dup
+    errors = SOASValidation.standards_integrity_errors(registry, documents: [], overlay_ids: Set.new)
+    assert_includes errors, "standards registry: duplicate ids"
+  end
+
+  def test_malformed_standard_entry_fails
+    registry = SOASValidation.load_yaml(SOASValidation::PACKAGE.join("standards/registry.yaml"))
+    registry["standards"].first.delete("official_source")
+    errors = SOASValidation.standards_integrity_errors(registry, documents: [], overlay_ids: Set.new)
+    assert_includes errors, "standards registry ISO-25010: missing official_source"
+  end
+
+  def test_registered_jurisdiction_overlay_is_not_treated_as_an_unknown_standard
+    registry = SOASValidation.load_yaml(SOASValidation::PACKAGE.join("standards/registry.yaml"))
+    documents = [["fixture.yaml", {"frameworks" => {"conditional" => ["JUR-AU"]}}]]
+    errors = SOASValidation.standards_integrity_errors(registry, documents: documents, overlay_ids: Set["JUR-AU"])
+    assert_empty errors
+  end
+
+  def test_offline_resolution_uses_pinned_finals
+    registry = SOASValidation.load_yaml(SOASValidation::PACKAGE.join("standards/registry.yaml"))
+    expected = {
+      "ISO-22301" => "2019+Amd 1:2024",
+      "ISO-31000" => "2018",
+      "ISO-9241-11" => "2018",
+      "ISO-9241-110" => "2020",
+      "ISO-9241-112" => "2025",
+      "ISO-9241-171" => "2025",
+      "ISO-9241-210" => "2019"
+    }
+    expected.each do |identifier, version|
+      resolved = SOASValidation.resolve_standard_offline(registry, identifier)
+      assert_equal version, resolved["pinned_version"]
+      assert_equal "offline", resolved["resolution_mode"]
+      refute_empty resolved["limitation"]
+    end
+  end
+
+  def test_offline_resolution_fails_closed_for_unknown_and_duplicate_ids
+    registry = SOASValidation.load_yaml(SOASValidation::PACKAGE.join("standards/registry.yaml"))
+    assert_raises(RuntimeError) { SOASValidation.resolve_standard_offline(registry, "UNKNOWN-STANDARD") }
+    registry["standards"] << registry["standards"].first.dup
+    assert_raises(RuntimeError) { SOASValidation.resolve_standard_offline(registry, registry["standards"].first["id"]) }
+  end
+
+  def test_draft_advisory_does_not_displace_pinned_final
+    registry = SOASValidation.load_yaml(SOASValidation::PACKAGE.join("standards/registry.yaml"))
+    standard = registry["standards"].find { |entry| entry["id"] == "ISO-22301" }
+    assert_includes standard["known_advisory"], "under development"
+    assert_equal "2019+Amd 1:2024", SOASValidation.resolve_standard_offline(registry, "ISO-22301")["pinned_version"]
+  end
 end
