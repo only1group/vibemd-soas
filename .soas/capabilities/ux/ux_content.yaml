@@ -61,7 +61,8 @@ inspection_procedures:
   responsive states.
 - Query repository and runtime evidence for UI content, flows; record source, location,
   time and subject version.
-- Compare observed behavior with ISO-9241 without treating automated checks as compliance.
+- Compare observed behavior with ISO-9241-110, ISO-9241-112 without treating
+  automated checks as compliance.
 test_recipes:
   positive:
   - Have representative users complete critical tasks with observable success criteria.
@@ -92,7 +93,8 @@ exit_criteria:
 - No insufficient-evidence, not-executed or blocked objective is represented as satisfied.
 frameworks:
   normative:
-  - ISO-9241
+  - ISO-9241-110
+  - ISO-9241-112
   advisory: []
   conditional:
   - JUR-AU

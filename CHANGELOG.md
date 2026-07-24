@@ -6,6 +6,20 @@ The format is inspired by *Keep a Changelog* and the project follows Semantic Ve
 
 ---
 
+## [5.0.1] - 2026-07-24
+
+### Fixed
+
+- Pinned ISO 22301:2019 with Amendment 1:2024 and retained the in-development
+  revision as advisory.
+- Replaced the ambiguous ISO 9241 family identifier with part-specific
+  references for usability, interaction, information presentation,
+  accessibility and human-centred design.
+- Extended standards validation across all machine-readable YAML sources with
+  fail-closed unknown and duplicate ID tests.
+- Added deterministic offline resolution tests for ISO 22301, ISO 31000 and the
+  selected ISO 9241 parts.
+
 ## [5.0.0] - 2026-07-23
 
 ### Added

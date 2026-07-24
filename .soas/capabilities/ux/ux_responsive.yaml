@@ -60,8 +60,8 @@ inspection_procedures:
   responsive states.
 - Query repository and runtime evidence for UI, device targets; record source, location,
   time and subject version.
-- Compare observed behavior with WCAG, ISO-9241 without treating automated checks
-  as compliance.
+- Compare observed behavior with WCAG, ISO-9241-11, ISO-9241-171 without treating
+  automated checks as compliance.
 test_recipes:
   positive:
   - Have representative users complete critical tasks with observable success criteria.
@@ -93,7 +93,8 @@ exit_criteria:
 frameworks:
   normative:
   - WCAG
-  - ISO-9241
+  - ISO-9241-11
+  - ISO-9241-171
   advisory: []
   conditional:
   - JUR-AU
